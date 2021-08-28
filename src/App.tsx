@@ -11,6 +11,7 @@ function App() {
 
   useEffect(() => {
     if (tracks.status === "succeeded") return;
+    if (tracks.status === "failed") return;
     dispatch(fetchTracksAsync());
   })
 

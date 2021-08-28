@@ -23,7 +23,7 @@ const initialState: TrackState = {
 export const fetchTracksAsync = createAsyncThunk(
   'track/fetchTracks',
   async () => {
-    const response = await fetch("/api/tracks");
+    const response = await fetch("api/tracks");
     // The value we return becomes the `fulfilled` action payload
     const tracks: Track[] = await response.json()
     return tracks;
