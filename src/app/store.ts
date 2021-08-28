@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import TrackReducer from '../slices/trackSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    track: TrackReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
