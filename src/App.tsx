@@ -11,8 +11,12 @@ function App() {
 
   useEffect(() => {
     if (tracks.status === "succeeded") return;
-    if (tracks.status === "failed") return;
-    dispatch(fetchTracksAsync());
+    if (tracks.status === "loading") return;
+
+    // Should retry fetching
+    // if (tracks.status === "failed"){
+    //   dispatch(fetchTracksAsync());
+    // }
   })
 
   const view = tracks.value.map(track => {
@@ -22,7 +26,7 @@ function App() {
   return (
     <div className="App">
       Test
-      {view}
+      {tracks.value.length === 0 ? <p>Loading...</p>: view}
     </div>
   );
 }
