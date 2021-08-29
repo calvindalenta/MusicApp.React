@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Discover from './discover/Discover';
 
 function Body(){
     const useStyles = makeStyles((theme) => ({
@@ -42,7 +43,7 @@ function Body(){
                     <Grid item xs={10} style={{backgroundColor: 'yellow'}}>
                     <Switch>
                         <Route exact path="/">
-                            Discover
+                            <Discover/>
                         </Route>
                         <Route path="/albums">
                             Albums
