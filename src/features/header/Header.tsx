@@ -5,12 +5,12 @@ import Logo from './Logo/Logo';
 function Header() {
 
   const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-}));
+    root: {
+      flexGrow: 1,
+    },
+  }));
 
-const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
