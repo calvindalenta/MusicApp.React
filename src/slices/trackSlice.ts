@@ -44,7 +44,7 @@ export const trackSlice = createSlice({
         });
         builder.addCase(fetchTracksAsync.rejected, (state) => {
             state.status = "failed";
-            console.log("Failed to fetch data");
+            console.error("Failed to fetch data");
         })
     },
 });

@@ -4,29 +4,19 @@ import './App.css';
 import { useAppSelector, useAppDispatch } from './app/hooks';
 import { TrackState, fetchTracksAsync, selectTrackState } from './slices/trackSlice';
 
+import Header from './features/header/Header';
 
 function App() {
   const tracks: TrackState = useAppSelector(selectTrackState);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (tracks.status === "succeeded") return;
-    if (tracks.status === "loading") return;
-
-    // Should retry fetching
-    // if (tracks.status === "failed"){
-    //   dispatch(fetchTracksAsync());
-    // }
-  })
-
-  const view = tracks.value.map(track => {
-    return <p key={track.id}>{track.author}</p>
-  })
+  // const view = tracks.value.map(track => {
+  //   return <p key={track.id}>{track.author}</p>
+  // })
 
   return (
     <div className="App">
-      Test
-      {tracks.value.length === 0 ? <p>Loading...</p>: view}
+      <Header/>
     </div>
   );
 }
