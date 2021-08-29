@@ -6,14 +6,14 @@ import { Track } from "../../../slices/trackSlice";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 180,
+    maxWidth: 250,
   },
   media: {
-    height: 140,
+    height: 100,
   },
 });
 
-function MostWatchedCard(props){
+function BrowseAllCard(props){
     const classes = useStyles();
     const track: Track = props.track;
     const imageUrl = "/api/image/" + track.id;
@@ -26,17 +26,12 @@ function MostWatchedCard(props){
                 image={imageUrl}
                 title={track.title}
                 />
-                <CardContent>
-                    <Typography variant="subtitle2" color="textSecondary" noWrap={true}>
-                        {track.author}
-                    </Typography>
-                    <Typography component="h6" variant="body1" noWrap={true}>
-                        {track.title}
-                    </Typography>
-                </CardContent>
+                <Typography component="h4" variant="h6" noWrap={true} style={{ position: 'absolute', color: 'white', textShadow: '1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000', top: '40%', left: '30%', transform: 'translateX(-50%)' }}>
+                    {track.genre}
+                </Typography>
             </CardActionArea>
         </Card>
     );
 }
 
-export default MostWatchedCard;
+export default BrowseAllCard;

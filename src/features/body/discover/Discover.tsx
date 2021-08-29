@@ -2,6 +2,7 @@ import { Grid, List, ListItem, ListItemText, makeStyles } from '@material-ui/cor
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTrackState } from '../../../slices/trackSlice';
+import BrowseAll from './BrowseAll';
 import MostWatched from './MostWatched';
 
 function Discover(){
@@ -14,6 +15,7 @@ function Discover(){
     return(
         <div className="discover">
             <MostWatched/>
+            <BrowseAll/>
         </div>
     );
 }

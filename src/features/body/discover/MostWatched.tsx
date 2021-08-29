@@ -7,8 +7,8 @@ function MostWatched(){
     const trackState = useSelector(selectTrackState);
     const cards = trackState.value.map(track => {
         const result =
-        <Grid item xs={2}>
-            <MostWatchedCard track={track}/>
+        <Grid item xs={2} key={track.id}>
+            <MostWatchedCard key={track.id} track={track}/>
         </Grid>
         return result;
     })
@@ -16,7 +16,7 @@ function MostWatched(){
     return (
         <div>
             <b>Most Watched</b>
-            <Grid container spacing={0}>
+            <Grid container spacing={3}>
                 {cards}
             </Grid>
         </div>
