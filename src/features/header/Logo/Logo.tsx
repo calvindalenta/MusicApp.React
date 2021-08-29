@@ -1,5 +1,6 @@
 import { createTheme, Link, ThemeProvider, Typography } from "@material-ui/core";
 import { faRecordVinyl } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const theme = createTheme();
 
@@ -29,7 +30,7 @@ function Logo(){
                       2. Make the text more bold
                       3. Get rid of the underline
                       */}
-                      Music App
+                      Music
                   </Typography>
                 </ThemeProvider>
 {/*                 

@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createTheme, Grid, Link, makeStyles, Paper, TextField, ThemeProvider, Typography } from '@material-ui/core';
-import React from 'react';
+import { Grid, makeStyles, TextField } from '@material-ui/core';
 import UserControl from './UserControl/UserControl';
 import Logo from './Logo/Logo';
 
