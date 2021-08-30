@@ -23,7 +23,7 @@ function Logo(){
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        //backgroundColor: "red",
+        // backgroundColor: "red",
         // verticalAlign: "middle",
         // margin: "auto",
         // textAlign: "center",
