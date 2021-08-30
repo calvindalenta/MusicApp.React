@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectTrackState, Track } from "../../../slices/trackSlice";
 import BrowseAllCard from "./BrowseAllCard";
@@ -17,10 +17,11 @@ function BrowseAll(){
         return;
     })
     let cards: JSX.Element[] = [];
-
+    let maxCards = 4;
     genres.forEach((value, key) => {
+        if (cards.length >= maxCards) return;
         const result = 
-        <Grid item xs={2} key={key}>
+        <Grid item xs={3} key={key}>
             <BrowseAllCard  track={value}/>
         </Grid>
         cards.push(result);
@@ -28,8 +29,10 @@ function BrowseAll(){
 
     return (
         <div>
-            <b>Browse All</b>
-            <Grid container spacing={3}>
+            <Typography variant='h6'>
+                Browse All
+            </Typography>
+            <Grid container spacing={0}>
                 {cards}
             </Grid>
         </div>

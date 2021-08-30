@@ -14,8 +14,18 @@ function Discover(){
 
     return(
         <div className="discover">
-            <MostWatched/>
-            <BrowseAll/>
+            <Grid
+            container
+            spacing={1}
+            style={{backgroundColor: 'lightgreen'}}
+            >
+                <Grid item xs={12}>
+                    <MostWatched/>
+                </Grid>
+                <Grid item xs={12}>
+                    <BrowseAll/>
+                </Grid>
+            </Grid>
         </div>
     );
 }
