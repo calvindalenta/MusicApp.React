@@ -5,27 +5,41 @@ import Logo from './Logo/Logo';
 function Header() {
 
   const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
+    header: {
+      //backgroundColor: "aquamarine",
+      width: "100%",
+      height: "10vh",
     },
+    textField: {
+      height: "10vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      //backgroundColor: "lightblue",
+    }
   }));
 
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.header}>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
 
-        <Grid item xs={2} style={{marginTop: 10}}>
+        <Grid item xs={2}>
           <Logo/>
         </Grid>
 
-        <Grid item xs={8}>
-          <TextField id="main-search" fullWidth label="Search for songs, artists, albums, etc..." type="search" />
+        <Grid item xs={8} className={classes.textField}>
+          <TextField 
+          id="main-search" 
+          fullWidth 
+          label="Search for songs, artists, albums, etc..." 
+          type="search" 
+          style={{overflow: "auto"}}/>
         </Grid>
 
-        <Grid item xs={2} style={{marginTop: 10}}>
+        <Grid item xs={2}>
           <UserControl/>
         </Grid>
 
