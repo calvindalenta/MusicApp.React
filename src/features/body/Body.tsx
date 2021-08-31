@@ -15,6 +15,7 @@ function Body(){
     const useStyles = makeStyles((theme) => ({
         body:{
             height: '70vh',
+            paddingBottom: '30vh',
             // backgroundColor: 'lightblue',
         },
         link: {
@@ -84,7 +85,7 @@ function Body(){
     const listView = list.map(target => 
     {
         const result =
-        <Link to={target.link} className={classes.link}>
+        <Link to={target.link} className={classes.link} key={target.text}>
             <ListItemEx 
             button
             className={classes.button}
