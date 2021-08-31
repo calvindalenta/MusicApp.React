@@ -1,6 +1,9 @@
 import { LinearProgress, withStyles } from "@material-ui/core";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTrackState } from "../../slices/trackSlice";
+import { setDuration, setCurrentTime, selectAudioPlayerState } from '../../slices/playerSlice';
 
 // https://stackoverflow.com/questions/53892108/color-change-for-the-loading-bar-component-of-material-ui
 const LinearProgressEx = withStyles(theme => ({
@@ -18,11 +21,11 @@ const LinearProgressEx = withStyles(theme => ({
     }
 }))(LinearProgress);
 
-export default function ProgressBar(){
-    const [progress, setProgress] = useState(0);
+export default function ProgressBar(props){
+    const { progress, onClick } = props;
     const maxBarValue = 100;
-
-    const player: HTMLAudioElement = document.getElementById('player') as HTMLAudioElement;
+    const audioPlayer = useSelector(selectAudioPlayerState);
+    const dispatch = useDispatch();
 
     // Determining click position on progress bar
     // https://stackoverflow.com/questions/28311631/determine-click-position-on-progress-bar
@@ -31,29 +34,29 @@ export default function ProgressBar(){
         const barWidth = document.body.clientWidth; // Assuming the bar has the same width with document.body
         const percentage = (clickX / barWidth);
         const progressBarValue = percentage  * maxBarValue;
-        const playerValue = percentage * player.duration;
-        setProgress(progressBarValue);
-        player.currentTime = playerValue;
+        const playerValue = percentage * 248;
+        onClick(percentage);
+        // dispatch(setCurrentTime(playerValue));
     }
 
     function updateProgressBar(currentTime: number, duration: number){
         const percentage = currentTime / duration;
         const progressBarValue = percentage * maxBarValue;
-        setProgress(progressBarValue);
+        onClick(progressBarValue, 0);
     }
 
-    const [hooked, setHooked] = useState(false);
+    // const [hooked, setHooked] = useState(false);
 
-    useEffect(() => {
-        if (player !== null){
-            if (!hooked){
-                player.addEventListener("timeupdate", function() {
-                    updateProgressBar(player.currentTime, player.duration)
-                }, false);
-                setHooked(true);
-            }
-        }
-    });
+    // useEffect(() => {
+    //     if (player !== null){
+    //         if (!hooked){
+    //             player.addEventListener("timeupdate", function() {
+    //                 updateProgressBar(player.currentTime, player.duration)
+    //             }, false);
+    //             setHooked(true);
+    //         }
+    //     }
+    // });
 
 
 
