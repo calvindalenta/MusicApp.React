@@ -29,6 +29,8 @@ function UserControl() {
     small: {
       width: theme.spacing(4),
       height: theme.spacing(4),
+      backgroundColor: '#ffcb19',
+      margin: '5px'
     },
   }));
 
