@@ -22,7 +22,7 @@ function Discover(){
             <Grid
             container
             spacing={1}
-            style={{backgroundColor: 'lightgreen'}}
+            // style={{backgroundColor: 'lightgreen'}}
             >
                 <Grid item xs={12} style={{marginBottom: '3vh'}}>
                     <Trending/>

@@ -15,7 +15,7 @@ function Body(){
     const useStyles = makeStyles((theme) => ({
         body:{
             height: '70vh',
-            backgroundColor: 'lightblue',
+            // backgroundColor: 'lightblue',
         },
         link: {
             textDecoration: 'none',
@@ -108,6 +108,7 @@ function Body(){
                         </List>
                     </Grid>
                     <Grid item xs={10}>
+                        <div style={{margin: "0 0 0 5%"}}>
                     <Switch>
                         <Route exact path="/">
                             <Discover/>
@@ -119,6 +120,8 @@ function Body(){
                             Genre
                         </Route>
                     </Switch>
+                        </div>
+
                     </Grid>
                 </Grid>
             </div>

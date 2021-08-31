@@ -10,6 +10,7 @@ function Header() {
       //backgroundColor: "aquamarine",
       // width: "100%",
       height: "10vh",
+      margin: "2vh 0"
     },
     textField: {
       verticalAlign: 'middle',

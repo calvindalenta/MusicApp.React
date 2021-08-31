@@ -11,9 +11,11 @@ theme.typography.h4 = {
   fontWeight: 'bold',
   fontSize: '0.8rem',
   '@media (min-width:600px)': {
+    fontWeight: 'bold',
     fontSize: '1.4rem',
   },
   [theme.breakpoints.up('md')]: {
+    fontWeight: 'bold',
     fontSize: '2.3rem',
   },
 };
