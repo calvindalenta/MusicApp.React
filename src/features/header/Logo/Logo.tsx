@@ -1,19 +1,22 @@
 import { createTheme, Grid, Link, makeStyles, responsiveFontSizes, ThemeProvider, Typography } from "@material-ui/core";
 import { faRecordVinyl } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo from './icon.jpg';
+
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
-// theme.typography.h4 = {
-//   fontSize: '1.1rem',
-//   '@media (min-width:600px)': {
-//     fontSize: '1.7rem',
-//   },
-//   [theme.breakpoints.up('md')]: {
-//     fontSize: '2.6rem',
-//   },
-// };
+theme.typography.h4 = {
+  fontWeight: 'bold',
+  fontSize: '0.8rem',
+  '@media (min-width:600px)': {
+    fontSize: '1.4rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.3rem',
+  },
+};
 
   
 function Logo(){
@@ -37,9 +40,16 @@ function Logo(){
         <Link href="/" underline='none' color='textPrimary' >
           {/* <FontAwesomeIcon icon={faRecordVinyl} size="lg"/> */}
           <ThemeProvider theme={theme}>
-            <Typography variant="h4" >
-                Music
-            </Typography>
+            <Grid container spacing={1}>
+              <Grid item xs={4}>
+                <img alt="Music Logo" src={logo} height="30vh" style={{marginTop: '1vh'}}/>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="h4" >
+                    Music
+                </Typography>
+              </Grid>
+            </Grid>
           </ThemeProvider>
         </Link>
       </div>
