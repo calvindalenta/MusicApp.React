@@ -7,23 +7,24 @@ import ProgressBar from './ProgressBar';
 function Player() {
 
   const useStyles = makeStyles((theme) => ({
-    container: {
+    audioPlayerContainer: {
         position: 'fixed',
         bottom: 0,
         height: "10vh",
         width: '100%',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
     },
   }));
 
   const tracks = useSelector(selectTrackState).value;
 
   const classes = useStyles();
-//   const audioUrl = '/api/track/' + tracks[0].id;
+  const audioUrl = '/api/test/track';
+
   return (
-    <div className={classes.container}>
+    <div className={classes.audioPlayerContainer}>
         <ProgressBar/>
-        {/* <audio controls src={audioUrl}/> */}
+        <audio id="player" controls src={audioUrl}/>
     </div>
   );
 }
