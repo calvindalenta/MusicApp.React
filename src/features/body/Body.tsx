@@ -1,4 +1,7 @@
 import { Grid, List, ListItemText, makeStyles, withStyles, ListItem} from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -21,11 +24,26 @@ function Body(){
         buttonActive: {
             backgroundColor: '#ffcb19',
             borderRadius: '25px',
-            textAlign: 'center',
+            //textAlign: 'center',
         },
         button: {
             borderRadius: '25px',
-            textAlign: 'center',
+            // textAlign: 'center',
+            // verticalAlign: 'middle',
+            padding: '0.5rem'
+        },
+        list: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: 'center',
+            justifyContent: "center",
+            width: '100%',
+        },
+        listIcon: {
+            marginLeft: '10%'
+        },
+        listText: {
+            marginLeft: '10%',
         }
     }));
 
@@ -38,13 +56,13 @@ function Body(){
         "&$selected": {
             backgroundColor: '#ffcb19',
             borderRadius: '25px',
-            textAlign: 'center',
+            //textAlign: 'center',
         },
         "&$selected:hover": {
             backgroundColor: '#ffcb19',
             opacity: '0.8',
             borderRadius: '25px',
-            textAlign: 'center',
+            //textAlign: 'center',
         },
         "&:hover": {
         "& .MuiListItemIcon-root": {
@@ -56,9 +74,9 @@ function Body(){
     })(ListItem);
 
     const list = [
-        {link: '/', text: 'Discover'},
-        {link: '/albums', text: 'Albums'},
-        {link: '/artists', text: 'Artists'},
+        {link: '/', text: 'Discover', icon: <HomeIcon className={classes.listIcon}/>},
+        {link: '/artists', text: 'Artists', icon: <QueueMusicIcon className={classes.listIcon}/>},
+        {link: '/genre', text: 'Genre', icon: <LibraryMusicIcon className={classes.listIcon}/>},
     ];
 
     const [selectedLink, setSelectedLink] = useState('Discover');
@@ -73,7 +91,8 @@ function Body(){
             selected={selectedLink === target.text ? true : false}
             onClick={(event) => setSelectedLink(target.text)}
             >
-                <ListItemText primary={target.text} />
+                {target.icon}
+                <ListItemText primary={target.text} className={classes.listText}/>
             </ListItemEx>
         </Link>
         return result;
@@ -93,11 +112,11 @@ function Body(){
                         <Route exact path="/">
                             <Discover/>
                         </Route>
-                        <Route path="/albums">
-                            Albums
-                        </Route>
                         <Route path="/artists">
                             Artists
+                        </Route>
+                        <Route path="/genre">
+                            Genre
                         </Route>
                     </Switch>
                     </Grid>
