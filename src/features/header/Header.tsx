@@ -1,20 +1,22 @@
-import { Grid, makeStyles, TextField } from '@material-ui/core';
+import { Grid, makeStyles, Paper, TextField } from '@material-ui/core';
 import UserControl from './UserControl/UserControl';
 import Logo from './Logo/Logo';
+import SearchIcon from '@material-ui/icons/Search';
 
 function Header() {
 
   const useStyles = makeStyles((theme) => ({
     header: {
       //backgroundColor: "aquamarine",
-      width: "100%",
+      // width: "100%",
       height: "10vh",
     },
     textField: {
-      height: "10vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      verticalAlign: 'middle',
+      marginTop: '2.5vh',
+      // display: "flex",
+      // justifyContent: "center",
+      // alignItems: "center",
       //backgroundColor: "lightblue",
     }
   }));
@@ -31,12 +33,17 @@ function Header() {
         </Grid>
 
         <Grid item xs={8} className={classes.textField}>
-          <TextField 
-          id="main-search" 
-          fullWidth 
-          label="Search for songs, artists, albums, etc..." 
-          type="search" 
-          style={{overflow: "auto"}}/>
+          <Paper elevation={0} style={{width: '100%', backgroundColor: '#f9f9fb', borderRadius: '25px'}}>
+            <SearchIcon color="disabled" style={{position: 'relative', left: '1%', top: '0.5vh'}}/>
+            <TextField 
+            id="main-search" 
+            placeholder="Search for songs, artists, albums, etc..." 
+            InputProps={{disableUnderline: true}}
+            type="search" 
+            style={{marginLeft: '1%', width: '92%'}}>
+              </TextField>
+          </Paper>
+
         </Grid>
 
         <Grid item xs={2}>
