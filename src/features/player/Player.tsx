@@ -1,5 +1,6 @@
 import { Grid, LinearProgress, makeStyles, Paper, TextField, withStyles } from '@material-ui/core';
-import { useRef } from 'react';
+import { relative } from 'path';
+import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,9 +15,18 @@ function Player() {
     audioPlayerContainer: {
         position: 'fixed',
         bottom: 0,
-        height: "10vh",
+        height: "12.5vh",
         width: '100%',
         backgroundColor: 'white',
+    },
+    progressBarContainer: {
+        top: '-1vh',
+    },
+    audioPlayerItems: {
+      height: '100%',
+      // backgroundColor: 'lightblue',
+      position: 'relative',
+      // top: '25%',
     },
   }));
 
@@ -43,7 +53,7 @@ function Player() {
     <audio 
       ref={player}
       id="player" 
-      controls 
+      // controls 
       src={audioUrl} 
       onTimeUpdate={handleOnTimeUpdate}
     />;
@@ -78,11 +88,17 @@ function Player() {
     }
 
   return (
+
     <div className={classes.audioPlayerContainer}>
+      <div className={classes.progressBarContainer}>
+        <ProgressBar progress={progress} onClick={handleOnClickProgressBar}/>
+      </div>
+      <div className={classes.audioPlayerItems}>
         <PlayPauseButton isPlaying={isPlaying} onClick={handleOnClickPlayPauseButton}/>
         {localPlayer === null ? "Loading" : localPlayer}
-        <ProgressBar progress={progress} onClick={handleOnClickProgressBar}/>
+      </div>
     </div>
+
   );
 }
 

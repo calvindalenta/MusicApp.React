@@ -63,7 +63,7 @@ export default function ProgressBar(props){
     return (
         <LinearProgressEx
             variant="determinate"
-            style={{height: '1vh'}}
+            style={{height: '1vh', bottom: '0px'}}
             value={progress}
             onClick={onClickProgressBar}
             // onDrag={onClickProgressBar}
