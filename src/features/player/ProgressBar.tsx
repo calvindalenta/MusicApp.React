@@ -1,4 +1,4 @@
-import { LinearProgress, withStyles } from "@material-ui/core";
+import { LinearProgress, Slider, withStyles } from "@material-ui/core";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +20,33 @@ const LinearProgressEx = withStyles(theme => ({
         cursor: 'pointer',
     }
 }))(LinearProgress);
+
+const TrackSlider = withStyles(theme => ({
+    root: {
+        color: '#ffcb19',
+        height: 0,
+    },
+    thumb: {
+        height: '2vh',
+        width: '2vh',
+        backgroundColor: '#ffcb19',
+        marginTop: '-0.5vh',
+        marginLeft: '-1vh',
+        '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    active: {},
+    valueLabel: {
+        left: 'calc(-50% + 4px)',
+    },
+    track: {
+        height: '1vh',
+    },
+    rail: {
+        height: '1vh',
+    },
+}))(Slider);
 
 export default function ProgressBar(props){
     const { progress, onClick } = props;
@@ -61,12 +88,17 @@ export default function ProgressBar(props){
 
 
     return (
-        <LinearProgressEx
-            variant="determinate"
-            style={{height: '1vh', bottom: '0px'}}
+        // <LinearProgressEx
+        //     variant="determinate"
+        //     style={{height: '1vh', bottom: '0px'}}
+        //     value={progress}
+        //     onClick={onClickProgressBar}
+        //     // onDrag={onClickProgressBar}
+        // />
+        <TrackSlider
+            // style={{bottom: '0px'}}
             value={progress}
             onClick={onClickProgressBar}
-            // onDrag={onClickProgressBar}
         />
     );
 }

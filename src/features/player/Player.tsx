@@ -27,7 +27,10 @@ function Player() {
         backgroundColor: 'white',
     },
     progressBarContainer: {
-        top: '-1vh',
+        width: '100%',
+        position: 'fixed',
+        bottom: '10vh',
+        zIndex: 1,
     },
     audioPlayerItems: {
       height: '100%',
@@ -130,12 +133,13 @@ function Player() {
     }
 
   return (
-
-    <div className={classes.audioPlayerContainer}>
-      {localPlayer === null ? "Loading" : localPlayer}
-      <div className={classes.progressBarContainer}>
+    <React.Fragment>
+ <div className={classes.progressBarContainer}>
         <ProgressBar progress={progress} onClick={handleOnClickProgressBar}/>
       </div>
+    <div className={classes.audioPlayerContainer}>
+      {localPlayer === null ? "Loading" : localPlayer}
+
       <div className={classes.audioPlayerItems}>
         <Grid
         container 
@@ -264,6 +268,8 @@ function Player() {
         </Grid>
       </div>
     </div>
+    </React.Fragment>
+     
 
   );
 }

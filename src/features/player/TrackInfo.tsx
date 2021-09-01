@@ -26,7 +26,7 @@ export default function TrackInfo(props){
                     />
                 </Grid>
                 <Grid item>
-                    <Typography variant="subtitle2" noWrap={true}>
+                    <Typography variant="subtitle2" noWrap={false}>
                         Don't You Know It's True
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary" noWrap={true}>
