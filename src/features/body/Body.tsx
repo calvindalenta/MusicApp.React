@@ -15,7 +15,7 @@ function Body(){
     const useStyles = makeStyles((theme) => ({
         body:{
             height: '70vh',
-            paddingBottom: '30vh',
+            paddingBottom: '25rem',
             // backgroundColor: 'lightblue',
         },
         link: {

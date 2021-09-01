@@ -157,7 +157,7 @@ function Player() {
           style={{backgroundColor: 'lightblue'}}
           >
 
-            <Grid container spacing={0} >
+            <Grid container spacing={5} >
               <Grid item xs={8}>
                 <TrackInfo/>
               </Grid>

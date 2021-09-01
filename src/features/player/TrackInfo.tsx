@@ -19,17 +19,21 @@ export default function TrackInfo(props){
     return (
         <React.Fragment>
             <Grid container spacing={2}>
-                <Grid item>
+                <Grid item xs={3}>
                     <Avatar 
                     alt='guest'
                     variant='rounded'
                     />
                 </Grid>
-                <Grid item>
-                    <Typography variant="subtitle2" noWrap={false}>
-                        Don't You Know It's True
+                <Grid 
+                item 
+                xs={8}
+                style={{ wordWrap: 'break-word', overflow: 'hidden' }}
+                >
+                    <Typography variant="subtitle2" noWrap>
+                        Don't You Know It's True Don't You Know It's TrueDon't You Know It's TrueDon't You Know It's TrueDon't You Know It's True
                     </Typography>
-                    <Typography variant="subtitle1" color="textSecondary" noWrap={true}>
+                    <Typography variant="subtitle1" color="textSecondary" noWrap>
                         Michael Ramir C.
                     </Typography>   
                 </Grid>
