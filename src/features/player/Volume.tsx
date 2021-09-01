@@ -53,15 +53,19 @@ const VolumeSlider = withStyles(theme => ({
 
 export default function Volume(props){
     const { currentVolume, onVolumeChange } = props;
-    const maxVolume = 1;
+    // const maxVolume = 1;
 
-    function onClickProgressBar(e){
-        const clickX = e.pageX;
-        const barWidth = document.body.clientWidth; // Assuming the bar has the same width with document.body
-        const percentage = (clickX / barWidth);
-        // const volume = percentage * maxVolume;
-        onVolumeChange(0.7);
-        // dispatch(setCurrentTime(playerValue));
+    // function onClickProgressBar(e){
+    //     const clickX = e.pageX;
+    //     const barWidth = document.body.clientWidth; // Assuming the bar has the same width with document.body
+    //     const percentage = (clickX / barWidth);
+    //     // const volume = percentage * maxVolume;
+    //     onVolumeChange(0.7);
+    //     // dispatch(setCurrentTime(playerValue));
+    // }
+
+    function handleChange(event: any, value: number | number[]){
+        if (typeof(value) === 'number') onVolumeChange(value);
     }
 
     return (
@@ -83,7 +87,11 @@ export default function Volume(props){
                     /> */}
                     <VolumeSlider
                     value={currentVolume}
-                    onClick={onClickProgressBar}
+                    // onClick={onClickProgressBar}
+                    onChange={handleChange}
+                    min={0}
+                    max={1}
+                    step={0.01}
                     />
                 </Grid>
             </Grid>

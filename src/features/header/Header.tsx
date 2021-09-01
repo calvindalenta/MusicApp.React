@@ -1,4 +1,4 @@
-import { Grid, makeStyles, Paper, TextField } from '@material-ui/core';
+import { Grid, makeStyles, Paper, Slider, TextField, withStyles } from '@material-ui/core';
 import UserControl from './UserControl/UserControl';
 import Logo from './Logo/Logo';
 import SearchIcon from '@material-ui/icons/Search';

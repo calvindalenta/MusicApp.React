@@ -25,6 +25,7 @@ const TrackSlider = withStyles(theme => ({
     root: {
         color: '#ffcb19',
         height: 0,
+        zIndex: 1,
     },
     thumb: {
         height: '2vh',
@@ -72,6 +73,10 @@ export default function ProgressBar(props){
         onClick(progressBarValue, 0);
     }
 
+    // function handleChange(event: any, value: number | number[]){
+    //     onClick((value as number) / 100); // Casting :(
+    // }
+
     // const [hooked, setHooked] = useState(false);
 
     // useEffect(() => {
@@ -95,10 +100,14 @@ export default function ProgressBar(props){
         //     onClick={onClickProgressBar}
         //     // onDrag={onClickProgressBar}
         // />
+        // <Slider defaultValue={0} onClick={onClickProgressBar} />
         <TrackSlider
             // style={{bottom: '0px'}}
             value={progress}
             onClick={onClickProgressBar}
+            // onChange={handleChange}
+            // aria-label="current time"
+            defaultValue={0}
         />
     );
 }

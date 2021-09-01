@@ -216,7 +216,7 @@ function Player() {
             >
               <Grid item xs={6}>
                 <Volume 
-                currentVolume={volume * 100}
+                currentVolume={volume}
                 onVolumeChange={handleOnVolumeChange}
                 />
               </Grid>
