@@ -70,7 +70,17 @@ export default function Volume(props){
 
     return (
         <React.Fragment>
-            <Grid
+            <VolumeUpIcon color='disabled'/>
+            <VolumeSlider
+            value={currentVolume}
+            // onClick={onClickProgressBar}
+            onChange={handleChange}
+            min={0}
+            max={1}
+            step={0.01}
+            />
+            
+            {/* <Grid
             container
             alignItems="center"
             justify="center"
@@ -78,13 +88,13 @@ export default function Volume(props){
                 <Grid item xs={2}>
                     <VolumeUpIcon color='disabled'/>
                 </Grid>
-                <Grid item xs={10}>
-                    {/* <LinearProgressEx
+                <Grid item xs={6}>
+                    <LinearProgressEx
                     variant="determinate"
                     style={{height: '0.5vh', width: '50%'}}
                     value={currentVolume}
                     onClick={onClickProgressBar}
-                    /> */}
+                    />
                     <VolumeSlider
                     value={currentVolume}
                     // onClick={onClickProgressBar}
@@ -94,7 +104,7 @@ export default function Volume(props){
                     step={0.01}
                     />
                 </Grid>
-            </Grid>
+            </Grid> */}
 
         </React.Fragment>
     );
