@@ -83,6 +83,7 @@ function Player() {
       src={audioUrl} 
       onTimeUpdate={handleOnTimeUpdate}
       onLoadedMetadata={handleOnLoadMetaData}
+      onEnded={handleOnEnded}
     />;
 
     function handleOnTimeUpdate(event){
@@ -92,6 +93,11 @@ function Player() {
     function handleOnLoadMetaData(event){
       setVolume(player.current.volume)
       setTime(event);
+    }
+
+    function handleOnEnded(event){
+      setIsPlaying(false);
+      player.current.currentTime = 0;
     }
 
     function setTime(event){
