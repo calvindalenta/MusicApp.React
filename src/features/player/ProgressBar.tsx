@@ -24,8 +24,8 @@ const LinearProgressEx = withStyles(theme => ({
 export default function ProgressBar(props){
     const { progress, onClick } = props;
     const maxBarValue = 100;
-    const audioPlayer = useSelector(selectAudioPlayerState);
-    const dispatch = useDispatch();
+    // const audioPlayer = useSelector(selectAudioPlayerState);
+    // const dispatch = useDispatch();
 
     // Determining click position on progress bar
     // https://stackoverflow.com/questions/28311631/determine-click-position-on-progress-bar
@@ -33,8 +33,8 @@ export default function ProgressBar(props){
         const clickX = e.pageX;
         const barWidth = document.body.clientWidth; // Assuming the bar has the same width with document.body
         const percentage = (clickX / barWidth);
-        const progressBarValue = percentage  * maxBarValue;
-        const playerValue = percentage * 248;
+        // const progressBarValue = percentage  * maxBarValue;
+        // const playerValue = percentage * 248;
         onClick(percentage);
         // dispatch(setCurrentTime(playerValue));
     }

@@ -1,4 +1,5 @@
 import { Grid, LinearProgress, makeStyles, Paper, TextField, withStyles } from '@material-ui/core';
+import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,27 +24,29 @@ function Player() {
 //   const tracks = useSelector(selectTrackState).value;
 //   const dispatch = useDispatch();
 
-  const classes = useStyles();
-
-  const audioUrl = '/api/test/track';
-  const localPlayer = 
-  <audio 
-    id="player" 
-    controls 
-    src={audioUrl} 
-    onTimeUpdate={handleOnTimeUpdate}
-  />;
   
-  let player: HTMLAudioElement = document.getElementById('player') as HTMLAudioElement;
+  // let player: HTMLAudioElement = document.getElementById('player') as HTMLAudioElement;
 
-  useEffect(() => {
-      if (player === null){
-          player = document.getElementById('player') as HTMLAudioElement;
-      }
-  });
+  // useEffect(() => {
+  //     if (player === null){
+  //         player = document.getElementById('player') as HTMLAudioElement;
+  //     }
+  // });
 
     const [progress, setProgress] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
+    const player = useRef<HTMLAudioElement>(null);
+
+    const classes = useStyles();
+    const audioUrl = '/api/test/track';
+    const localPlayer = 
+    <audio 
+      ref={player}
+      id="player" 
+      controls 
+      src={audioUrl} 
+      onTimeUpdate={handleOnTimeUpdate}
+    />;
 
     function handleOnTimeUpdate(event){
         const target = event.currentTarget;
@@ -54,9 +57,9 @@ function Player() {
 
     function handleOnClickProgressBar(percentage: number){
         const progressBarValue = percentage  * maxBarValue;
-        const playerValue = percentage * player.duration;
+        const playerValue = percentage * player.current.duration;
         setProgress(progressBarValue);
-        player.currentTime = playerValue;
+        player.current.currentTime = playerValue;
     }
 
     function translateCurrentTime(currentTime: number, duration: number){
@@ -67,9 +70,9 @@ function Player() {
 
     function handleOnClickPlayPauseButton(){
         if (isPlaying) {
-            player.pause();
+            player.current.pause();
         } else {
-            player.play();
+            player.current.play();
         }
         setIsPlaying(!isPlaying);
     }
