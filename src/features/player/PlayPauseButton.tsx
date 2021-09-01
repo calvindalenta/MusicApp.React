@@ -13,7 +13,11 @@ const PlayCircleFilledIconEx = withStyles(theme => ({
         // backgroundColor: '#ffcb19',
         color: '#ffcb19',
         cursor: 'pointer',
-        fontSize: '7vh',
+        fontSize: '6vh',
+        // top: '50%',
+        // left: '50%',
+        // transform: 'translate(-50%, -50%)',
+        // position: 'absolute',
     },
     // colorPrimary: {
     //     color: '#ffcb19',
@@ -24,7 +28,8 @@ const PauseCircleFilledIconEx = withStyles(theme => ({
     root: {
         color: '#ffcb19',
         cursor: 'pointer',
-        fontSize: '7vh',
+        fontSize: '6vh',
+        // backgroundColor: 'red',
     },
 }))(PauseCircleFilledIcon);
 
