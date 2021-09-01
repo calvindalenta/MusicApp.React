@@ -1,4 +1,4 @@
-import { Avatar, Button, Grid, LinearProgress, ThemeProvider, Typography, withStyles } from "@material-ui/core";
+import { Avatar, Button, Grid, LinearProgress, Slider, ThemeProvider, Typography, withStyles } from "@material-ui/core";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,34 @@ const LinearProgressEx = withStyles(theme => ({
         cursor: 'pointer',
     }
 }))(LinearProgress);
+
+const VolumeSlider = withStyles(theme => ({
+    root: {
+        color: '#ffcb19',
+        height: 0,
+        width: '50%',
+    },
+    thumb: {
+        height: '1vh',
+        width: '1vh',
+        backgroundColor: '#ffcb19',
+        marginTop: '-0.3vh',
+        marginLeft: '0vh',
+        '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+        },
+    },
+    active: {},
+    valueLabel: {
+        left: 'calc(-50% + 4px)',
+    },
+    track: {
+        height: '0.5vh',
+    },
+    rail: {
+        height: '0.5vh',
+    },
+}))(Slider);
 
 
 export default function Volume(props){
@@ -47,9 +75,13 @@ export default function Volume(props){
                     <VolumeUpIcon color='disabled'/>
                 </Grid>
                 <Grid item xs={10}>
-                    <LinearProgressEx
+                    {/* <LinearProgressEx
                     variant="determinate"
                     style={{height: '0.5vh', width: '50%'}}
+                    value={currentVolume}
+                    onClick={onClickProgressBar}
+                    /> */}
+                    <VolumeSlider
                     value={currentVolume}
                     onClick={onClickProgressBar}
                     />
