@@ -16,6 +16,9 @@ import RepeatIcon from '@material-ui/icons/Repeat';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import Volume from './Volume';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import GetAppIcon from '@material-ui/icons/GetApp';
 function Player() {
 
   const useStyles = makeStyles((theme) => ({
@@ -217,7 +220,7 @@ function Player() {
             container 
             spacing={0} 
             style={{
-              textAlign: "center", 
+              // textAlign: "center", 
             }}  
             >
               <Grid item xs={6}>
@@ -227,8 +230,17 @@ function Player() {
                 />
               </Grid>
               <Grid item xs={6}>
-                <ShuffleIcon color='disabled'></ShuffleIcon>
-                <ShuffleIcon color='disabled'></ShuffleIcon>
+                <Grid container spacing={0}>
+                  <Grid item xs={4}>
+                    <FavoriteIcon color='disabled'></FavoriteIcon>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <PlaylistAddIcon color='disabled'></PlaylistAddIcon>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <GetAppIcon color='disabled'></GetAppIcon>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
