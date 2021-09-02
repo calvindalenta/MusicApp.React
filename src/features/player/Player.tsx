@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAudioPlayerState, setDuration, setCurrentTime} from '../../slices/playerSlice';
+import { selectAudioPlayerState, setCurrentTrack, registerCallback } from '../../slices/playerSlice';
 import { selectTrackState } from '../../slices/trackSlice';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
@@ -89,6 +89,25 @@ function Player() {
       onEnded={handleOnEnded}
     />;
 
+    const dispatch = useDispatch();
+    const audioPlayerState = useSelector(selectAudioPlayerState).value;
+    const [hooked, setHooked] = useState(false);
+    useEffect(() => {
+      if (hooked) return;
+      dispatch(registerCallback(handleOnChangeTrack));
+      setHooked(true);
+    }, [hooked, dispatch]);
+
+    function handleOnChangeTrack(id: string){
+      const currentPlayer = player.current;
+      currentPlayer.pause();
+      setIsPlaying(false);
+      currentPlayer.src = 'api/track/' + id;
+      currentPlayer.load();
+      setIsPlaying(true);
+      currentPlayer.play();
+    }
+
     function handleOnTimeUpdate(event){
       setTime(event);
     }
@@ -143,10 +162,10 @@ function Player() {
 
   return (
     <React.Fragment>
- <div className={classes.progressBarContainer}>
+      <div className={classes.progressBarContainer}>
         <ProgressBar progress={progress} onClick={handleOnClickProgressBar}/>
       </div>
-    <div className={classes.audioPlayerContainer}>
+      <div className={classes.audioPlayerContainer}>
       {localPlayer === null ? "Loading" : localPlayer}
 
       <div className={classes.audioPlayerItems}>

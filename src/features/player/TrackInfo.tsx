@@ -3,18 +3,22 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTrackState } from "../../slices/trackSlice";
-import { setDuration, setCurrentTime, selectAudioPlayerState } from '../../slices/playerSlice';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import React from "react";
+import { selectAudioPlayerState } from "../../slices/playerSlice";
 
 export default function TrackInfo(props){
 
     const avatar = null;
 
-    const title = null;
+    const audioPlayerState = useSelector(selectAudioPlayerState).value;
 
-    const author = null;
+    const title = audioPlayerState.currentTrack !== null ? audioPlayerState.currentTrack.title : 'No Title';
+
+    const author = audioPlayerState.currentTrack !== null ? audioPlayerState.currentTrack.author : 'No Title';;
+
+    const imageSource = audioPlayerState.currentTrack !== null ? 'api/image/' + audioPlayerState.currentTrack.id : '';
 
     return (
         <React.Fragment>
@@ -23,6 +27,7 @@ export default function TrackInfo(props){
                     <Avatar 
                     alt='guest'
                     variant='rounded'
+                    src={imageSource}
                     />
                 </Grid>
                 <Grid 
@@ -31,10 +36,10 @@ export default function TrackInfo(props){
                 style={{ wordWrap: 'break-word', overflow: 'hidden' }}
                 >
                     <Typography variant="subtitle2" noWrap>
-                        Don't You Know It's True Don't You Know It's TrueDon't You Know It's TrueDon't You Know It's TrueDon't You Know It's True
+                        {title}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary" noWrap>
-                        Michael Ramir C.
+                        {author}
                     </Typography>   
                 </Grid>
             </Grid>

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTrackState } from "../../slices/trackSlice";
-import { setDuration, setCurrentTime, selectAudioPlayerState } from '../../slices/playerSlice';
 import React from "react";
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 

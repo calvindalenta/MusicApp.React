@@ -2,6 +2,8 @@ import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, crea
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import { useDispatch } from "react-redux";
+import { setCurrentTrack } from "../../../slices/playerSlice";
 import { Track } from "../../../slices/trackSlice";
 
 // const useStyles = makeStyles({
@@ -77,8 +79,10 @@ function MostWatchedCard(props){
     const track: Track = props.track;
     const imageUrl = "/api/image/" + track.id;
 
+    const dispatch = useDispatch();
+
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} onClick={(e) => dispatch(setCurrentTrack(track))}>
             <CardActionArea>
                 <CardMedia
                 className={classes.media}

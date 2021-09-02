@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTrackState } from "../../slices/trackSlice";
-import { setDuration, setCurrentTime, selectAudioPlayerState } from '../../slices/playerSlice';
 
 // https://stackoverflow.com/questions/53892108/color-change-for-the-loading-bar-component-of-material-ui
 const LinearProgressEx = withStyles(theme => ({
