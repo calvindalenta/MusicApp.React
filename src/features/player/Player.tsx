@@ -90,7 +90,6 @@ function Player() {
     />;
 
     const dispatch = useDispatch();
-    const audioPlayerState = useSelector(selectAudioPlayerState).value;
     const [hooked, setHooked] = useState(false);
     useEffect(() => {
       if (hooked) return;
@@ -98,6 +97,8 @@ function Player() {
       setHooked(true);
     }, [hooked, dispatch]);
 
+    // Changing audio source with javascript
+    // https://stackoverflow.com/questions/10792163/change-audio-src-with-javascript
     function handleOnChangeTrack(id: string){
       const currentPlayer = player.current;
       currentPlayer.pause();
