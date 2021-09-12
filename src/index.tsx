@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { fetchTracksAsync } from './slices/trackSlice';
 
-// store.dispatch(fetchTracksAsync());
+store.dispatch(fetchTracksAsync());
 
 ReactDOM.render(
   <React.StrictMode>

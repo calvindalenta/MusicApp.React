@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import Discover from './discover/Discover';
 import Nav from './nav/Nav';
-import Card from './card/Card';
+import CardView from './recently-added/CardView';
 import Album from './album/Album';
 import Trending from './trending/Trending';
 import Popular from './popular/Popular';
@@ -111,7 +111,7 @@ function Body(){
             <div className="main-section">
                 <section><Album/></section>
                 <section><Trending/></section>
-                <section><Card/></section>
+                <section><CardView/></section>
                 <section><Popular/></section>
             </div>
         </main>
