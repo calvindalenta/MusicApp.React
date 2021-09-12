@@ -1,0 +1,33 @@
+.album-container {
+    height: 90%;
+    /* border: 3px solid red; */
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5%;  
+    }
+}
+
+.album-text {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    margin: 5% 0 0 5%;
+    /* border: 3px solid black; */
+    
+    .album-description, .album-author {
+        margin-bottom: 5%;
+    }
+    
+    .album-description {
+        font-weight: bold;
+        color: lightgrey;
+    }
+
+    .album-author {
+        font-weight: 900;
+    }
+}

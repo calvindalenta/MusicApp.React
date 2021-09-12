@@ -1,0 +1,57 @@
+.popular-container {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    /* border: 3px solid red; */
+}
+
+.popular-box {
+    flex: 0 1 25%;
+    border-radius: 5%;
+    /* background-color: $primary-grey; */
+    display: flex;
+    align-items: center;
+    /* background-color: lightgrey; */
+
+    img {
+        flex: 2;
+        object-fit: cover;
+        max-width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+        /* border: 3px solid red; */
+    }
+    .popular-text {
+        flex: 8;
+        font-weight: bold;
+        /* border: 3px solid red; */
+    
+        .popular-followers {
+            color: lightgrey;
+            font-size: 1.2rem;
+        }
+    }
+    
+    i {
+        flex: 2;
+        color: lightgrey;
+        /* border: 3px solid red; */
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .popular-container {
+        width: 100%;
+        gap: 1%;
+        height: 80%;
+    }
+
+    .popular-box {
+        padding: 2vh 0;  
+    }
+}
+
+

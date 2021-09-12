@@ -1,0 +1,41 @@
+@import '../../../index.scss';
+
+nav {
+    .nav-header {
+        font-weight: bold;
+        color: lightgrey;
+        padding: 5%;
+        margin-left: 10%;
+    }
+
+    .nav-header:last-of-type {
+        margin-top: 10%;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        width: 70%;
+        padding: 4% 5%;
+        margin-left: 10%;
+        margin-top: 3%;
+
+        background-color: transparent;
+
+        border-radius: 3rem;
+
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+
+        i {
+            margin-right: 10%;
+        }
+    }
+
+    .active {
+        background-color: $primary-orange;
+    }
+}

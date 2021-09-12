@@ -1,3 +1,4 @@
+import './Body.scss'
 import { Grid, List, ListItemText, makeStyles, withStyles, ListItem} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
@@ -10,6 +11,11 @@ import {
   Link
 } from "react-router-dom";
 import Discover from './discover/Discover';
+import Nav from './nav/Nav';
+import Card from './card/Card';
+import Album from './album/Album';
+import Trending from './trending/Trending';
+import Popular from './popular/Popular';
 
 function Body(){
     const useStyles = makeStyles((theme) => ({
@@ -100,33 +106,15 @@ function Body(){
     });
 
     return(
-        <Router>
-            <div className={classes.body}>
-                <Grid container>
-                    <Grid item xs={2}>
-                        <List component="nav" aria-label="secondary">
-                            {listView}
-                        </List>
-                    </Grid>
-                    <Grid item xs={10}>
-                        <div style={{margin: "0 0 0 5%"}}>
-                    <Switch>
-                        <Route exact path="/">
-                            <Discover/>
-                        </Route>
-                        <Route path="/artists">
-                            Artists
-                        </Route>
-                        <Route path="/genre">
-                            Genre
-                        </Route>
-                    </Switch>
-                        </div>
-
-                    </Grid>
-                </Grid>
+        <main>
+            <Nav/>
+            <div className="main-section">
+                <section><Album/></section>
+                <section><Trending/></section>
+                <section><Card/></section>
+                <section><Popular/></section>
             </div>
-        </Router>
+        </main>
     );
 }
 

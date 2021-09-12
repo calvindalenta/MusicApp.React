@@ -1,0 +1,55 @@
+@import '../../../index.scss';
+
+.trending-container {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    /* border: 3px solid red; */
+}
+
+.trending-box {
+    flex: 0 1 25%;
+    border-radius: 5%;
+    background-color: $primary-grey;
+    display: flex;
+    align-items: center;
+    /* background-color: lightgrey; */
+    
+    i {
+        flex: 1.5;
+        /* border: 3px solid red; */
+    }
+    
+    .trending-text, .trending-duration {
+        font-weight: bold;
+    }
+
+    .trending-text {
+        flex: 8;
+        /* border: 3px solid red; */
+
+        .trending-author {
+            color: lightgrey;
+            font-size: 1.2rem;
+        }
+    }
+    
+    .trending-duration {
+        flex: 2;
+        /* border: 3px solid red; */
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .trending-container {
+        width: 100%;
+        gap: 1%;
+        height: 80%;
+    }
+
+    .trending-box {
+        padding: 2vh 0;  
+    }
+}

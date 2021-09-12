@@ -1,0 +1,115 @@
+@import '../../index.scss';
+
+footer {
+    position: fixed;
+    bottom: 0;
+    height: 12.5vh;
+    width: 100%;
+    background-color: white;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+
+    .player-left, .player-middle, .player-right {
+        flex: 1;
+        /* border: 3px solid lightgreen; */
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    footer, #progress-bar {
+        display: none;
+    }
+}
+
+.player-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.player-left {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    margin-left: 2%;
+    /* background-color: lightgrey; */
+
+    img {
+        flex: 1.5;
+        max-width: 10%;
+        height: 10%;
+        border-radius: 5%;
+        /* border: 3px solid red; */
+    }
+
+    .player-left-text, .timestamp {
+        font-weight: bold;
+    }
+
+    .player-left-text {
+        flex: 8;
+        /* border: 3px solid red; */
+
+        .description {
+            color: lightgrey;
+            font-size: 1.2rem;
+        }
+    }
+
+    .timestamp {
+        flex: 2;
+        color: lightgrey;
+        /* border: 3px solid red; */
+    }
+}
+
+.player-right {
+    display: flex;
+    margin-right: 2%;
+
+    .volume-control, .user-control {
+        flex: 1;
+        display: flex;
+        /* border: 3px solid red; */
+    }
+    .volume-control {
+        i {
+            flex: 1;
+        }
+
+        #volume-slider {
+            flex: 9;
+            width: 100%;
+        
+            -webkit-appearance: none;
+            appearance: none;
+        
+            background: transparent;
+            outline: none;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+    }
+
+    .user-control {
+        i {
+            /* border: 3px solid black; */
+            text-align: right;
+            flex: 0 0 25%;
+        }
+    }
+}
+
+#progress-bar {
+    height: 0.5vh;
+    width: 55%;
+    background: $primary-orange;
+    position: fixed;
+    bottom: 12vh;
+    z-index: 1;
+}
+
+@import "volume-slider"

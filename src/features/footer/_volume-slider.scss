@@ -1,0 +1,67 @@
+/* https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider */
+
+/* Chrome */
+#volume-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.5vh;
+  /* background: $primary-orange; */
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1vh;
+  width: 1vh;
+  border-radius: 50%;
+  background: $primary-orange;
+  margin-top: -0.25vh;
+}
+
+/* FF */
+#volume-slider::-moz-range-progress {
+  width: 100%;
+  height: 0.5vh;
+  background-color: $primary-orange; 
+}
+
+#volume-slider::-moz-range-track {  
+  width: 100%;
+  height: 0.5vh;
+  background-color: $primary-grey;
+}
+
+#volume-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1vh;
+  width: 1vh;
+  border-radius: 50%;
+  background: $primary-orange;
+  margin-top: -0.25vh;
+  outline: none;
+  border: none;
+}
+
+/* IE */
+#volume-slider::-ms-track {
+  background: $primary-orange;
+}
+
+#volume-slider::-ms-thumb {
+  -webkit-appearance: none;
+  height: 1vh;
+  width: 1vh;
+  border-radius: 50%;
+  background: $primary-orange;
+  margin-top: -0.25vh;
+}
+
+#volume-slider::-ms-fill-lower {
+  width: 100%;
+  height: 0.5vh;
+  background-color: $primary-grey; 
+}
+
+#volume-slider::-ms-fill-upper {  
+  width: 100%;
+  height: 0.5vh;
+  background-color: $primary-orange;
+}
