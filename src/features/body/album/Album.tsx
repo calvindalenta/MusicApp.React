@@ -1,15 +1,21 @@
 import './Album.scss'
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectTrackState } from '../../../slices/trackSlice';
+import Api from '../../../api/api';
 
 function Album(){
 
+    const tracks = useSelector(selectTrackState).value;
+    const track = tracks[tracks.length - 1];
+
     return(
         <React.Fragment>
-            <h2>Albums</h2>
+            <h2>Album</h2>
             <div className="album-container">
-                <img src="images/giya-kancheli.jpg" alt="Giya Kancheli"/>
+                <img src={Api.resolveImagePath(track.id)} alt={track.author}/>
                 <div className="album-text">
-                    <h2 className="album-author">Giya Kancheli</h2>
+                    <h2 className="album-author">{track.author}</h2>
                     <p className="album-description">Three Pieces from Songbook, Andrius Zlabys, piano</p>
                 </div>
             </div>
