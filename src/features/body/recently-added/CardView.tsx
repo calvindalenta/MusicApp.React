@@ -10,15 +10,21 @@ function CardView(){
     const tracks = useSelector(selectTrackState).value;
 
     const MAX_CARD = 3;
-    const cards = tracks.map((track, index) => {
-        if (index >= MAX_CARD) return;
-        return <Card 
-        key={track.id}
-        src={Api.resolveImagePath(track.id)} 
-        title={track.title} 
-        author={track.author}
-        />
-    });
+
+    const cards = tracks.reduce((prev, curr, index) => {
+        if (index >= MAX_CARD) return prev;
+
+        const card = 
+        <Card 
+            key={curr.id}
+            src={Api.resolveImagePath(curr.id)} 
+            title={curr.title} 
+            author={curr.author}
+        />;
+
+        prev.push(card)
+        return prev;
+    }, new Array<JSX.Element>());
 
     return(
         <React.Fragment>
