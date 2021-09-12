@@ -1,6 +1,6 @@
 import './CardView.scss'
 import React from 'react';
-import Card from './card/Card';
+import Card from './Card';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../../slices/trackSlice';
 import Api from '../../../api/api';
@@ -12,7 +12,12 @@ function CardView(){
     const MAX_CARD = 3;
     const cards = tracks.map((track, index) => {
         if (index >= MAX_CARD) return;
-        return <Card src={Api.resolveImagePath(track.id)} title={track.title} author={track.author}/>
+        return <Card 
+        key={track.id}
+        src={Api.resolveImagePath(track.id)} 
+        title={track.title} 
+        author={track.author}
+        />
     });
 
     return(

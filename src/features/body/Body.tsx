@@ -14,8 +14,10 @@ import Discover from './discover/Discover';
 import Nav from './nav/Nav';
 import CardView from './recently-added/CardView';
 import Album from './album/Album';
-import Trending from './trending/Trending';
+import TrendingView from './trending/TrendingView';
 import Popular from './popular/Popular';
+import { useSelector } from 'react-redux';
+import { selectTrackState } from '../../slices/trackSlice';
 
 function Body(){
     const useStyles = makeStyles((theme) => ({
@@ -108,12 +110,17 @@ function Body(){
     return(
         <main>
             <Nav/>
+            {
+            useSelector(selectTrackState).status === 'succeeded' ?
             <div className="main-section">
                 <section><Album/></section>
-                <section><Trending/></section>
+                <section><TrendingView/></section>
                 <section><CardView/></section>
                 <section><Popular/></section>
-            </div>
+            </div> :
+            ''
+            }
+            
         </main>
     );
 }
