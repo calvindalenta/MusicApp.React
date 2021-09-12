@@ -15,7 +15,7 @@ import Nav from './nav/Nav';
 import CardView from './recently-added/CardView';
 import Album from './album/Album';
 import TrendingView from './trending/TrendingView';
-import Popular from './popular/Popular';
+import PopularView from './popular/PopularView';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../slices/trackSlice';
 
@@ -116,7 +116,7 @@ function Body(){
                 <section><Album/></section>
                 <section><TrendingView/></section>
                 <section><CardView/></section>
-                <section><Popular/></section>
+                <section><PopularView/></section>
             </div> :
             ''
             }
