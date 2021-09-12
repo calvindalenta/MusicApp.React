@@ -7,10 +7,8 @@ import { Box, Container } from '@material-ui/core';
 
 function App() {
   return (
-    <div className="container" >
-      <Header/>
-      <Body/>
-      <Player/>
+    <div className="body" >
+
     </div>
 
   );
