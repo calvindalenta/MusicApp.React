@@ -1,5 +1,4 @@
 import './Nav.scss'
-import { ListItem } from '@material-ui/core';
 import NavItem from './NavItem';
 
 function Nav(){

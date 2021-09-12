@@ -1,3 +1,4 @@
+import { ListItem } from '@material-ui/core';
 import { Track } from '../../../slices/trackSlice'
 
 export interface TrendingProps {
@@ -7,7 +8,7 @@ export interface TrendingProps {
 export default function Trending(props: TrendingProps){
 
     return (
-        <div className="trending-box">
+        <ListItem button className="trending-box">
             <i className="fas fa-play-circle fa-3x"></i>
             <div className="trending-text">
                 <p className="trending-title">{props.track.title}</p>
@@ -16,7 +17,7 @@ export default function Trending(props: TrendingProps){
             <p className="trending-duration">
                 03:37
             </p>
-        </div>
+        </ListItem>
     );
 
 }
