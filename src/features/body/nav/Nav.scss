@@ -33,6 +33,10 @@ nav {
         i {
             margin-right: 10%;
         }
+
+        &:hover {
+            background: rgba($primary-orange,0.5);
+        }
     }
 
     .active {

@@ -1,47 +1,48 @@
 import './Nav.scss'
-
+import { ListItem } from '@material-ui/core';
+    
 function Nav(){
     return(
         <nav>
             <p className="nav-header">
                 MUSIC
             </p>
-            <a className="nav-item" href="#">
-                <i className="fas fa-home fa-2x"></i>
-                <p>Home</p>
-            </a>
-            <a className="nav-item active" href="#">
+            <ListItem button className="nav-item">
+                    <i className="fas fa-home fa-2x"></i>
+                    <p>Home</p>
+            </ListItem>
+            <ListItem button className="nav-item active">
                 <i className="fas fa-headphones fa-2x"></i>
                 <p>Songs</p>
-            </a>
-            <a className="nav-item" href="#">
+            </ListItem>
+            <ListItem button className="nav-item">
                 <i className="far fa-folder fa-2x"></i>
                 <p>Albums</p>
-            </a>
-            <a className="nav-item" href="#">
+            </ListItem>
+            <ListItem button className="nav-item">
                 <i className="fas fa-user-friends fa-2x"></i>
                 <p>Artists</p>
-            </a>
+            </ListItem>
 
             <p className="nav-header">
                 PLAYLISTS
             </p>
-            <a className="nav-item" href="#">
+            <ListItem button className="nav-item">
                 <i className="fas fa-list fa-2x"></i>
                 <p>Best of Kancheli</p>
-            </a>
-            <a className="nav-item" href="#">
+            </ListItem>
+            <ListItem button className="nav-item">
                 <i className="fas fa-list fa-2x"></i>
                 <p>Classical Musics</p>
-            </a>
-            <a className="nav-item" href="#">
+            </ListItem>
+            <ListItem button className="nav-item">
                 <i className="fas fa-list fa-2x"></i>
                 <p>Mood Booster</p>
-            </a>
-            <a className="nav-item" href="#">
+            </ListItem>
+            <ListItem button className="nav-item">
                 <i className="fas fa-list fa-2x"></i>
                 <p>Crying Heart</p>
-            </a>
+            </ListItem>
         </nav>        
     );
 }
