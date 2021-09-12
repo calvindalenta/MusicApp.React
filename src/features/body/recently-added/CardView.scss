@@ -2,6 +2,7 @@
     margin: 0 0;
     width: 100%;
     display: flex;
+    // border: 2px solid black;
     gap: 10%;
     /* border: 3px solid red; */
     height: 90%;
@@ -12,15 +13,33 @@
         flex: 0 1 25%;
         /* width: 15%; */
         /* height: 27vh; */
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        // border: 1px solid black;
+        // background: red;
+
+        .card-image {
+            flex: 3;
+        }
+
+        .card-footer {
+            flex: 1;
+        }
     }
 }
 
 .card-image {
+    // border: 1px solid grey;
+
     img {
         border-radius: 5%;
         width: 100%;
-        height: 50%;
+        height: 100%;
+        object-fit: fill;
     }
+
+    // background: red;
 }
 
 .card-footer {
@@ -29,6 +48,7 @@
     display: flex;
     align-items: center;
     margin-top: 1vh;
+    // background: green;
 
     .card-text {
         flex: 4;
