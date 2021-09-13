@@ -7,6 +7,7 @@ import TrackInfo from './TrackInfo';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
 import Volume from './Volume';
+import ProgressBar from './ProgressBar';
 
 export default function Footer(){
 
@@ -14,10 +15,12 @@ export default function Footer(){
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.3);
+    const [progress, setProgress] = useState(0);
 
     const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const localPlayer = 
     <audio 
+    style={{position: 'fixed', top: 0,}}
       ref={audioPlayerRef}
       id="player" 
       controls 
@@ -37,8 +40,9 @@ export default function Footer(){
     }
 
     function handleOnEnded(event: SyntheticEvent<HTMLAudioElement, Event>){
-    //   setIsPlaying(false);
-    //   player.current.currentTime = 0;
+        setIsPlaying(false);
+        audioPlayerRef.current.currentTime = 0;
+        setProgress(0);
     }
 
     function handleOnClickPlayPauseButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
@@ -57,10 +61,20 @@ export default function Footer(){
         audioPlayerRef.current.volume = value;
     }
 
+    const MAX_PROGRESSBAR_VALUE = 100;
+    function handleOnProgressBarChange(event: React.ChangeEvent<{}>, value: number | number[]){
+        if (typeof(value) !== 'number') return;
+        
+        const percentage = value / MAX_PROGRESSBAR_VALUE;
+        audioPlayerRef.current.currentTime = percentage * audioPlayerRef.current.duration;
+        setProgress(value);
+    }
+
     return (
         <React.Fragment>
             {localPlayer}
-            <div id="progress-bar"></div>
+            {/* <div id="progress-bar"></div> */}
+            <ProgressBar progress={progress} onChange={handleOnProgressBarChange}/>
             <footer>
                 <div className="player-left">
                     <TrackInfo track={audioPlayerState.currentTrack}/>
