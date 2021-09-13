@@ -18,6 +18,7 @@ import TrendingView from './trending/TrendingView';
 import PopularView from './popular/PopularView';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../slices/trackSlice';
+import React from 'react';
 
 function Body(){
 
@@ -111,16 +112,19 @@ function Body(){
     return(
         <main>
             <Nav/>
-            {
-            useSelector(selectTrackState).status === 'succeeded' ?
             <div className="main-section">
-                <section><Album/></section>
-                <section><TrendingView/></section>
-                <section><CardView/></section>
-                <section><PopularView/></section>
-            </div> :
-            ''
-            }
+                {
+                useSelector(selectTrackState).status === 'succeeded' ?
+                    <React.Fragment>
+                        <section><Album/></section>
+                        <section><TrendingView/></section>
+                        <section><CardView/></section>
+                        <section><PopularView/></section>
+                    </React.Fragment>
+                :
+                'Something went wrong'
+                }
+            </div> 
             
         </main>
     );
