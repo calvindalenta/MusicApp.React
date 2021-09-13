@@ -15,6 +15,7 @@ import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
 import RepeatButton from './RepeatButton';
 import ShuffleButton from './ShuffleButton';
+import FavoriteButton from './FavoriteButton';
 
 export default function Footer(){
 
@@ -26,6 +27,9 @@ export default function Footer(){
     const [volume, setVolume] = useState(0.3);
     const [progress, setProgress] = useState(0);
     const [durationInfo, setDurationInfo] = useState({currentTime: 0, duration: 0});
+
+    // For FavouriteButton
+    const [favorite, setFavorite] = useState(false);
 
     const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const localPlayer = 
@@ -141,6 +145,11 @@ export default function Footer(){
         currentPlayer.currentTime = 0;
     }
 
+    function handleOnClickFavoriteButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        setFavorite(!favorite);
+        console.log(favorite);
+    }
+
     return (
         <React.Fragment>
             {localPlayer}
@@ -170,7 +179,8 @@ export default function Footer(){
                         <Volume currentVolume={volume} onVolumeChange={handleOnVolumeChange}/>
                     </div>
                     <div className="user-control">
-                        <i className="fas fa-heart fa-2x"></i>
+                        {/* <i className="fas fa-heart fa-2x"></i> */}
+                        <FavoriteButton onClick={handleOnClickFavoriteButton} active={favorite}/>
                         <i className="fas fa-plus fa-2x"></i>
                         <i className="fas fa-download fa-2x"></i>
                     </div>
