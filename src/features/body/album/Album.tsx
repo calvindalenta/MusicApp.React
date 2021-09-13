@@ -2,7 +2,6 @@ import './Album.scss'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../../slices/trackSlice';
-import Api from '../../../api/api';
 
 function Album(){
 

@@ -3,7 +3,6 @@ import React from 'react';
 import Card from './Card';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../../slices/trackSlice';
-import Api from '../../../api/api';
 
 function CardView(){
     

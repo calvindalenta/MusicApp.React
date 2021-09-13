@@ -16,8 +16,6 @@ import ForwardButton from './ForwardButton';
 import RepeatButton from './RepeatButton';
 import ShuffleButton from './ShuffleButton';
 
-import Api from '../../api/api';
-
 export default function Footer(){
 
     const trackState = useSelector(selectTrackState);

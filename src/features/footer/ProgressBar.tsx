@@ -1,8 +1,4 @@
-import { LinearProgress, Slider, withStyles } from "@material-ui/core";
-import { MouseEventHandler, useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTrackState } from "../../slices/trackSlice";
+import { Slider, withStyles } from "@material-ui/core";
 
 // https://stackoverflow.com/questions/53892108/color-change-for-the-loading-bar-component-of-material-ui
 const TrackSlider = withStyles(theme => ({

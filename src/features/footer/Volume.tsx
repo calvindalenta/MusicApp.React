@@ -1,6 +1,6 @@
 import { Slider, withStyles } from "@material-ui/core";
 import React from "react";
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+// import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 const VolumeSlider = withStyles(theme => ({
     root: {

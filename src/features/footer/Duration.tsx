@@ -1,10 +1,3 @@
-import { Avatar, Button, Grid, LinearProgress, ThemeProvider, Typography, withStyles } from "@material-ui/core";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTrackState } from "../../slices/trackSlice";
-import React from "react";
-
 export interface DurationProps {
     currentTime: number;
     duration: number;

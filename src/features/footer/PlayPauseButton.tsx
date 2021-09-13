@@ -1,8 +1,7 @@
 import { withStyles } from "@material-ui/core";
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
-import React, { MouseEventHandler } from "react";
-import { SyntheticEvent } from "hoist-non-react-statics/node_modules/@types/react";
+import React from "react";
 
 const PlayCircleFilledIconEx = withStyles(theme => ({
     root: {

@@ -1,4 +1,3 @@
-import Api from '../../../api/api';
 import { Track } from '../../../slices/trackSlice'
 
 export interface PopularProps {
