@@ -1,18 +1,20 @@
 import './Footer.scss';
-import React, { SyntheticEvent, useRef, useState } from "react";
-import { useSelector } from 'react-redux';
-import { selectTrackState } from '../../slices/trackSlice';
-import { selectAudioPlayerState } from '../../slices/playerSlice';
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTrackState, Track } from '../../slices/trackSlice';
+import { registerCallback, selectAudioPlayerState, setCurrentTrack } from '../../slices/playerSlice';
 import TrackInfo from './TrackInfo';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
 import Volume from './Volume';
 import ProgressBar from './ProgressBar';
-import { duration } from '@material-ui/core';
+import Api from '../../api/api';
 
 export default function Footer(){
 
+    const tracks = useSelector(selectTrackState).value;
     const audioPlayerState = useSelector(selectAudioPlayerState).value;
+    const dispatch = useDispatch();
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.3);
@@ -22,18 +24,34 @@ export default function Footer(){
     const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const localPlayer = 
     <audio 
-    style={{position: 'fixed', top: 0,}}
-      ref={audioPlayerRef}
-      id="player" 
-      controls 
-      src={"/api/test/track"}
-      onPlay={() => {
-          audioPlayerRef.current.volume = volume
-      }}
-      onTimeUpdate={handleOnTimeUpdate}
-      onLoadedMetadata={handleOnLoadMetaData}
-      onEnded={handleOnEnded}
+        // style={{position: 'fixed', top: 0,}}
+        ref={audioPlayerRef}
+        id="player" 
+        // controls 
+        onPlay={() => {
+            audioPlayerRef.current.volume = volume
+        }}
+        onTimeUpdate={handleOnTimeUpdate}
+        onLoadedMetadata={handleOnLoadMetaData}
+        onEnded={handleOnEnded}
     />;
+
+    // https://stackoverflow.com/questions/53214465/how-to-use-lifecycle-methods-with-hooks-in-react
+    useEffect(() => {
+        dispatch(registerCallback(handleOnChangeTrack));
+        const randomTrack = tracks[Math.round(Math.random() * tracks.length)];
+        dispatch(setCurrentTrack(randomTrack))
+    }, [dispatch, tracks]);
+
+    function handleOnChangeTrack(track: Track){
+        const currentPlayer = audioPlayerRef.current;
+        currentPlayer.pause();
+        setIsPlaying(false);
+        currentPlayer.src = Api.resolveTrackPath(track.id);
+        currentPlayer.load();
+        // setIsPlaying(true);
+        // currentPlayer.play();
+    }
 
     function translateCurrentTimeToProgressBarValue(currentTime: number, duration: number){
         const percentage = currentTime / duration;
@@ -41,7 +59,8 @@ export default function Footer(){
         return progressBarValue;
     }
 
-    function setTime(event: any){
+    function setTime(event: SyntheticEvent<HTMLAudioElement, Event>){
+        if (!audioPlayerState.currentTrack) return;
         const target = event.currentTarget;
         setDurationInfo(value => ({
             currentTime: Math.round(target.currentTime),
@@ -65,6 +84,7 @@ export default function Footer(){
     }
 
     function handleOnClickPlayPauseButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        if (!audioPlayerState.currentTrack) return;
         if (isPlaying) {
             audioPlayerRef.current.pause();
         } else {
@@ -82,6 +102,7 @@ export default function Footer(){
 
     const MAX_PROGRESSBAR_VALUE = 100;
     function handleOnProgressBarChange(event: React.ChangeEvent<{}>, value: number | number[]){
+        if (!audioPlayerState.currentTrack) return;
         if (typeof(value) !== 'number') return;
         
         const percentage = value / MAX_PROGRESSBAR_VALUE;

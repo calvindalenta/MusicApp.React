@@ -93,7 +93,7 @@ function Player() {
     const [hooked, setHooked] = useState(false);
     useEffect(() => {
       if (hooked) return;
-      dispatch(registerCallback(handleOnChangeTrack));
+      // dispatch(registerCallback(handleOnChangeTrack));
       setHooked(true);
     }, [hooked, dispatch]);
 

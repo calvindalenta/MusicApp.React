@@ -1,4 +1,6 @@
 import { ListItem } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { setCurrentTrack } from '../../../slices/playerSlice';
 import { Track } from '../../../slices/trackSlice'
 
 export interface TrendingProps {
@@ -7,8 +9,10 @@ export interface TrendingProps {
 
 export default function Trending(props: TrendingProps){
 
+    const dispatch = useDispatch();
+
     return (
-        <ListItem button className="trending-box">
+        <ListItem button className="trending-box" onClick={() => dispatch(setCurrentTrack(props.track))}>
             <i className="fas fa-play-circle fa-3x"></i>
             <div className="trending-text">
                 <p className="trending-title">{props.track.title}</p>

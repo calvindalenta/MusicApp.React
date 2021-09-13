@@ -7,9 +7,11 @@ import
 import { RootState } from '../app/store';
 import { Track } from './trackSlice';
 
+type ChangeTrackCallback = (track: Track) => void;
+
 export interface AudioPlayer{
     currentTrack: Track;
-    callback: Function;
+    callback: ChangeTrackCallback;
 }
 
 export interface AudioPlayerState {
@@ -29,10 +31,10 @@ export const audioPlayerSlice = createSlice({
   reducers: {
       setCurrentTrack(state, action: PayloadAction<Track>) {
         state.value.currentTrack = action.payload;
-        state.value.callback(state.value.currentTrack.id);
+        state.value.callback(action.payload);
         return state;
       },
-      registerCallback(state, action: PayloadAction<Function>){
+      registerCallback(state, action: PayloadAction<ChangeTrackCallback>){
         state.value.callback = action.payload;
         return state;
       },
