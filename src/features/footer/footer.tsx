@@ -58,7 +58,7 @@ export default function Footer(){
         const currentPlayer = audioPlayerRef.current;
         currentPlayer.pause();
         setIsPlaying(false);
-        currentPlayer.src = Api.resolveTrackPath(track.id);
+        currentPlayer.src = track.trackUrl;
         currentPlayer.load();
         // setIsPlaying(true);
         // currentPlayer.play();

@@ -21,7 +21,7 @@ export default function TrackInfo(props: TrackInfoProps){
 
     const author = track !== null ? track.author : 'No Title';;
 
-    const imageSource = track !== null ? Api.resolveImagePath(track.id) : '';
+    const imageSource = track !== null ? track.imageUrl : '';
 
     return (
         <React.Fragment>

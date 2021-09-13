@@ -17,7 +17,7 @@ function CardView(){
         const card = 
         <Card 
             key={curr.id}
-            src={Api.resolveImagePath(curr.id)} 
+            src={curr.imageUrl} 
             title={curr.title} 
             author={curr.author}
         />;

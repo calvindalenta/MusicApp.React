@@ -18,7 +18,7 @@ export default function Popular(props: PopularProps){
     }
     return (
         <div className="popular-box">
-            <img src={Api.resolveImagePath(track.id)} alt={track.author}/>
+            <img src={track.imageUrl} alt={track.author}/>
             <div className="popular-text">
                 <p className="popular-author">{track.author}</p>
                 <p className="popular-followers">{randomNumber}M Followers</p>

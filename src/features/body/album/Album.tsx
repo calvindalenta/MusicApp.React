@@ -13,7 +13,7 @@ function Album(){
         <React.Fragment>
             <h2>Album</h2>
             <div className="album-container">
-                <img src={Api.resolveImagePath(track.id)} alt={track.author}/>
+                <img src={track.imageUrl} alt={track.author}/>
                 <div className="album-text">
                     <h2 className="album-author">{track.author}</h2>
                     <p className="album-description">Three Pieces from Songbook, Andrius Zlabys, piano</p>
