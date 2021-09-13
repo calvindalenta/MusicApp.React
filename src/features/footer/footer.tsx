@@ -6,6 +6,7 @@ import { selectAudioPlayerState } from '../../slices/playerSlice';
 import TrackInfo from './TrackInfo';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
+import Volume from './Volume';
 
 export default function Footer(){
 
@@ -49,6 +50,13 @@ export default function Footer(){
         setIsPlaying(!isPlaying);
     }
 
+    function handleOnVolumeChange(event: React.ChangeEvent<{}>, value: number | number[]){
+        if (typeof(value) !== 'number') return;
+
+        setVolume(value);
+        audioPlayerRef.current.volume = value;
+    }
+
     return (
         <React.Fragment>
             {localPlayer}
@@ -68,8 +76,9 @@ export default function Footer(){
                 </div>
                 <div className="player-right">
                     <div className="volume-control">
-                        <i className="fas fa-volume-down fa-2x"></i>
-                        <input type="range" min="1" max="100" value="30" id="volume-slider"/>
+                        {/* <i className="fas fa-volume-down fa-2x"></i>
+                        <input type="range" min="1" max="100" value="30" id="volume-slider"/> */}
+                        <Volume currentVolume={volume} onVolumeChange={handleOnVolumeChange}/>
                     </div>
                     <div className="user-control">
                         <i className="fas fa-heart fa-2x"></i>

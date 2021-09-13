@@ -73,16 +73,21 @@ footer {
     .volume-control, .user-control {
         flex: 1;
         display: flex;
-        /* border: 3px solid red; */
+        align-items: center;
+        // border: 3px solid red;
     }
     .volume-control {
-        i {
+        .volume-icon {
             flex: 1;
+            // border: 1px solid black;
         }
 
-        #volume-slider {
-            flex: 9;
-            width: 100%;
+        .volume-slider {
+            // flex: 4;
+            width: 50%;
+            margin-right: 35%;
+
+            // border: 1px solid black;
         
             -webkit-appearance: none;
             appearance: none;
@@ -112,4 +117,4 @@ footer {
     z-index: 1;
 }
 
-@import "volume-slider"
+// @import "volume-slider"
