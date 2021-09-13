@@ -1,8 +1,11 @@
 import './Footer.scss';
+
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTrackState, Track } from '../../slices/trackSlice';
 import { registerCallback, selectAudioPlayerState, setCurrentTrack } from '../../slices/playerSlice';
+
 import TrackInfo from './TrackInfo';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
@@ -12,7 +15,7 @@ import Api from '../../api/api';
 
 export default function Footer(){
 
-    const tracks = useSelector(selectTrackState).value;
+    const trackState = useSelector(selectTrackState);
     const audioPlayerState = useSelector(selectAudioPlayerState).value;
     const dispatch = useDispatch();
 
@@ -39,9 +42,12 @@ export default function Footer(){
     // https://stackoverflow.com/questions/53214465/how-to-use-lifecycle-methods-with-hooks-in-react
     useEffect(() => {
         dispatch(registerCallback(handleOnChangeTrack));
-        const randomTrack = tracks[Math.round(Math.random() * tracks.length)];
-        dispatch(setCurrentTrack(randomTrack))
-    }, [dispatch, tracks]);
+
+        if (trackState.status === 'succeeded') {
+            const randomTrack = trackState.value[Math.round(Math.random() * trackState.value.length)];
+            dispatch(setCurrentTrack(randomTrack));
+        }
+    }, [dispatch, trackState]);
 
     function handleOnChangeTrack(track: Track){
         const currentPlayer = audioPlayerRef.current;

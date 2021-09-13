@@ -122,7 +122,7 @@ function Body(){
                         <section><PopularView/></section>
                     </React.Fragment>
                 :
-                'Something went wrong'
+                'Loading...'
                 }
             </div> 
             
