@@ -24,7 +24,10 @@ export default function Footer(){
       ref={audioPlayerRef}
       id="player" 
       controls 
-      src={"/api/test/track"} 
+      src={"/api/test/track"}
+      onPlay={() => {
+          audioPlayerRef.current.volume = volume
+      }}
       onTimeUpdate={handleOnTimeUpdate}
       onLoadedMetadata={handleOnLoadMetaData}
       onEnded={handleOnEnded}
@@ -42,8 +45,8 @@ export default function Footer(){
     }
 
     function handleOnLoadMetaData(event: SyntheticEvent<HTMLAudioElement, Event>){
-    //   setVolume(player.current.volume)
-    //   setTime(event);
+        const target = event.currentTarget;
+        setProgress(translateCurrentTimeToProgressBarValue(target.currentTime, target.duration));
     }
 
     function handleOnEnded(event: SyntheticEvent<HTMLAudioElement, Event>){
