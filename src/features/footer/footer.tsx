@@ -30,8 +30,15 @@ export default function Footer(){
       onEnded={handleOnEnded}
     />;
 
+    function translateCurrentTimeToProgressBarValue(currentTime: number, duration: number){
+        const percentage = currentTime / duration;
+        const progressBarValue = percentage * MAX_PROGRESSBAR_VALUE;
+        return progressBarValue;
+    }
+
     function handleOnTimeUpdate(event: SyntheticEvent<HTMLAudioElement, Event>){
-    //   setTime(event);
+        const target = event.currentTarget;
+        setProgress(translateCurrentTimeToProgressBarValue(target.currentTime, target.duration));
     }
 
     function handleOnLoadMetaData(event: SyntheticEvent<HTMLAudioElement, Event>){
