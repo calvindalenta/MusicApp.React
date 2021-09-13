@@ -1,10 +1,12 @@
 import './Footer.scss';
-import React, { useRef, useState } from "react";
+import React, { SyntheticEvent, useRef, useState } from "react";
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../slices/trackSlice';
 import { selectAudioPlayerState } from '../../slices/playerSlice';
 import TrackInfo from './TrackInfo';
 import Duration from './Duration';
+import PlayPauseButton from './PlayPauseButton';
+
 export default function Footer(){
 
     const audioPlayerState = useSelector(selectAudioPlayerState).value;
@@ -12,7 +14,7 @@ export default function Footer(){
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.3);
 
-    const audioPlayerRef = useRef(null);
+    const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const localPlayer = 
     <audio 
       ref={audioPlayerRef}
@@ -24,18 +26,27 @@ export default function Footer(){
       onEnded={handleOnEnded}
     />;
 
-    function handleOnTimeUpdate(event){
+    function handleOnTimeUpdate(event: SyntheticEvent<HTMLAudioElement, Event>){
     //   setTime(event);
     }
 
-    function handleOnLoadMetaData(event){
+    function handleOnLoadMetaData(event: SyntheticEvent<HTMLAudioElement, Event>){
     //   setVolume(player.current.volume)
     //   setTime(event);
     }
 
-    function handleOnEnded(event){
+    function handleOnEnded(event: SyntheticEvent<HTMLAudioElement, Event>){
     //   setIsPlaying(false);
     //   player.current.currentTime = 0;
+    }
+
+    function handleOnClickPlayPauseButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        if (isPlaying) {
+            audioPlayerRef.current.pause();
+        } else {
+            audioPlayerRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
     }
 
     return (
@@ -50,7 +61,8 @@ export default function Footer(){
                 <div className="player-middle">
                     <i className="fas fa-redo fa-2x"></i>
                     <i className="fas fa-backward fa-2x"></i>
-                    <i className="fas fa-play-circle fa-3x"></i>
+                    {/* <i className="fas fa-play-circle fa-3x"></i> */}
+                    <PlayPauseButton isPlaying={isPlaying} onClick={handleOnClickPlayPauseButton}/>
                     <i className="fas fa-forward fa-2x"></i>
                     <i className="fas fa-random fa-2x"></i>
                 </div>
