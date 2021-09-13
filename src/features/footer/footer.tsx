@@ -8,6 +8,7 @@ import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
 import Volume from './Volume';
 import ProgressBar from './ProgressBar';
+import { duration } from '@material-ui/core';
 
 export default function Footer(){
 
@@ -16,6 +17,7 @@ export default function Footer(){
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.3);
     const [progress, setProgress] = useState(0);
+    const [durationInfo, setDurationInfo] = useState({currentTime: 0, duration: 0});
 
     const audioPlayerRef = useRef<HTMLAudioElement>(null);
     const localPlayer = 
@@ -39,14 +41,21 @@ export default function Footer(){
         return progressBarValue;
     }
 
-    function handleOnTimeUpdate(event: SyntheticEvent<HTMLAudioElement, Event>){
+    function setTime(event: any){
         const target = event.currentTarget;
+        setDurationInfo(value => ({
+            currentTime: Math.round(target.currentTime),
+            duration: Math.round(target.duration),
+        }));
         setProgress(translateCurrentTimeToProgressBarValue(target.currentTime, target.duration));
     }
 
+    function handleOnTimeUpdate(event: SyntheticEvent<HTMLAudioElement, Event>){
+        setTime(event);
+    }
+
     function handleOnLoadMetaData(event: SyntheticEvent<HTMLAudioElement, Event>){
-        const target = event.currentTarget;
-        setProgress(translateCurrentTimeToProgressBarValue(target.currentTime, target.duration));
+        setTime(event);
     }
 
     function handleOnEnded(event: SyntheticEvent<HTMLAudioElement, Event>){
@@ -88,7 +97,7 @@ export default function Footer(){
             <footer>
                 <div className="player-left">
                     <TrackInfo track={audioPlayerState.currentTrack}/>
-                    <Duration currentTime={60} duration={90}/>
+                    <Duration currentTime={durationInfo.currentTime} duration={durationInfo.duration}/>
                 </div>
                 <div className="player-middle">
                     <i className="fas fa-redo fa-2x"></i>
