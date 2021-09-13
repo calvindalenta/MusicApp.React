@@ -8,6 +8,8 @@ export interface Track{
     source: string;
     genre: string;
     filename: string;
+    imageUrl: string;
+    trackUrl: string;
 }
 
 export interface TrackState {
