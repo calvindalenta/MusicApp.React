@@ -1,21 +1,51 @@
 import './Footer.scss';
-import React from "react";
-
+import React, { useRef, useState } from "react";
+import { useSelector } from 'react-redux';
+import { selectTrackState } from '../../slices/trackSlice';
+import { selectAudioPlayerState } from '../../slices/playerSlice';
+import TrackInfo from './TrackInfo';
+import Duration from './Duration';
 export default function Footer(){
+
+    const audioPlayerState = useSelector(selectAudioPlayerState).value;
+
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [volume, setVolume] = useState(0.3);
+
+    const audioPlayerRef = useRef(null);
+    const localPlayer = 
+    <audio 
+      ref={audioPlayerRef}
+      id="player" 
+      controls 
+      src={"/api/test/track"} 
+      onTimeUpdate={handleOnTimeUpdate}
+      onLoadedMetadata={handleOnLoadMetaData}
+      onEnded={handleOnEnded}
+    />;
+
+    function handleOnTimeUpdate(event){
+    //   setTime(event);
+    }
+
+    function handleOnLoadMetaData(event){
+    //   setVolume(player.current.volume)
+    //   setTime(event);
+    }
+
+    function handleOnEnded(event){
+    //   setIsPlaying(false);
+    //   player.current.currentTime = 0;
+    }
 
     return (
         <React.Fragment>
+            {localPlayer}
             <div id="progress-bar"></div>
             <footer>
                 <div className="player-left">
-                    <img src="images/giya-kancheli-small.jpg" alt="Giya Kancheli"/>
-                    <div className="player-left-text">
-                        <p className="author">Giya Kancheli - Yellow Leaves</p>
-                        <p className="description">Levani Qotolashvili</p>
-                    </div>
-                    <p className="timestamp">
-                        1:53 - 3:08
-                    </p>
+                    <TrackInfo track={audioPlayerState.currentTrack}/>
+                    <Duration currentTime={60} duration={90}/>
                 </div>
                 <div className="player-middle">
                     <i className="fas fa-redo fa-2x"></i>

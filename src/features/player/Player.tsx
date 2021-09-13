@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAudioPlayerState, setCurrentTrack, registerCallback } from '../../slices/playerSlice';
 import { selectTrackState } from '../../slices/trackSlice';
-import Duration from './Duration';
+import Duration from '../footer/Duration';
 import PlayPauseButton from './PlayPauseButton';
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
@@ -191,7 +191,7 @@ function Player() {
                 <TrackInfo/>
               </Grid>
               <Grid item xs={4}>
-                <Duration durationInfo={durationInfo}/>
+                {/* <Duration durationInfo={durationInfo}/> */}
               </Grid>
             </Grid>
 
