@@ -11,6 +11,11 @@ import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
 import Volume from './Volume';
 import ProgressBar from './ProgressBar';
+import RewindButton from './RewindButton';
+import ForwardButton from './ForwardButton';
+import RepeatButton from './RepeatButton';
+import ShuffleButton from './ShuffleButton';
+
 import Api from '../../api/api';
 
 export default function Footer(){
@@ -116,6 +121,28 @@ export default function Footer(){
         setProgress(value);
     }
 
+    function getRandomTrack(){
+        const randomTrack = trackState.value[Math.round(Math.random() * trackState.value.length)];
+        return randomTrack;
+    }
+
+    function handleOnClickRewindButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        dispatch(setCurrentTrack(getRandomTrack()));
+    }
+
+    function handleOnClickForwardButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        dispatch(setCurrentTrack(getRandomTrack()));
+    }
+
+    function handleOnClickShuffleButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        dispatch(setCurrentTrack(getRandomTrack()));
+    }
+
+    function handleOnClickRepeatButton(event: React.MouseEvent<SVGSVGElement, MouseEvent>){
+        const currentPlayer = audioPlayerRef.current;
+        currentPlayer.currentTime = 0;
+    }
+
     return (
         <React.Fragment>
             {localPlayer}
@@ -127,12 +154,16 @@ export default function Footer(){
                     <Duration currentTime={durationInfo.currentTime} duration={durationInfo.duration}/>
                 </div>
                 <div className="player-middle">
-                    <i className="fas fa-redo fa-2x"></i>
-                    <i className="fas fa-backward fa-2x"></i>
+                    {/* <i className="fas fa-redo fa-2x"></i> */}
+                    <RepeatButton onClick={handleOnClickRepeatButton}/>
+                    {/* <i className="fas fa-backward fa-2x"></i> */}
+                    <RewindButton onClick={handleOnClickRewindButton}/>
                     {/* <i className="fas fa-play-circle fa-3x"></i> */}
                     <PlayPauseButton isPlaying={isPlaying} onClick={handleOnClickPlayPauseButton}/>
-                    <i className="fas fa-forward fa-2x"></i>
-                    <i className="fas fa-random fa-2x"></i>
+                    {/* <i className="fas fa-forward fa-2x"></i> */}
+                    <ForwardButton onClick={handleOnClickForwardButton}/>
+                    {/* <i className="fas fa-random fa-2x"></i> */}
+                    <ShuffleButton onClick={handleOnClickShuffleButton}/>
                 </div>
                 <div className="player-right">
                     <div className="volume-control">
