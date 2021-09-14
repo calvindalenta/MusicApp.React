@@ -16,6 +16,7 @@ import FavoriteButton from './FavoriteButton';
 import MobileProgressBar from './MobileProgressBar';
 import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
+import MobileDuration from './MobileDuration';
 
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
@@ -51,10 +52,18 @@ const DialogEx = withStyles(theme => ({
 
 export default function MobilePlayer(props: MobilePlayerProps) {
 
+    const track = props.currentTrack;
+
     const handleClose = () => {
         props.onClose();
     };
 
+    const title = track !== null ? track.title : 'No Title';
+
+    const author = track !== null ? track.author : 'No Title';;
+
+    const imageSource = track !== null ? track.imageUrl : '';
+    
     return (
         <DialogEx 
         fullScreen 
@@ -67,14 +76,14 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                     <MoreVertIcon onClick={() => {}} fontSize="large"/>
                 </div>
                 <div className="dialog-image">
-                    <img src={props.currentTrack.imageUrl} alt={props.currentTrack.title + ' - ' + props.currentTrack.author} />
+                    <img src={imageSource} alt={title + ' - ' + author} />
                 </div>
                 <div className="dialog-info">
                     <div className="dialog-title">
-                        <p>{props.currentTrack.title}</p>
+                        <p>{title}</p>
                     </div>
                     <div className="dialog-author">
-                        <p>{props.currentTrack.author}</p>
+                        <p>{author}</p>
                     </div>
                 </div>
                 <div className="dialog-control">
@@ -89,8 +98,7 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                     <MobileProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
                 </div>
                 <div className="dialog-duration">
-                    <p>1:00</p>
-                    <p>2:30</p>
+                    <MobileDuration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}/>
                 </div>
                 <div className="dialog-footer">
                     <RewindButton onClick={props.handleOnClickRewindButton}/>
