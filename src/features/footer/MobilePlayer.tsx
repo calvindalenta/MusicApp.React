@@ -7,6 +7,7 @@ import { Dialog, withStyles } from "@material-ui/core";
 import { Track } from '../../slices/trackSlice';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import PlayPauseButton from './PlayPauseButton';
 import RepeatButton from './RepeatButton';
@@ -63,7 +64,7 @@ export default function MobilePlayer(props: MobilePlayerProps) {
             <div className="dialog-container">
                 <div className="dialog-header">
                     <ArrowBackIosIcon onClick={handleClose} fontSize="large"/>
-                    <ArrowBackIosIcon onClick={handleClose} fontSize="large"/>
+                    <MoreVertIcon onClick={() => {}} fontSize="large"/>
                 </div>
                 <div className="dialog-image">
                     <img src={props.currentTrack.imageUrl} alt={props.currentTrack.title + ' - ' + props.currentTrack.author} />
