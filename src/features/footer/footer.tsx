@@ -6,16 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTrackState, Track } from '../../slices/trackSlice';
 import { registerCallback, selectAudioPlayerState, setCurrentTrack } from '../../slices/playerSlice';
 
-import TrackInfo from './TrackInfo';
-import Duration from './Duration';
-import PlayPauseButton from './PlayPauseButton';
-import Volume from './Volume';
-import ProgressBar from './ProgressBar';
-import RewindButton from './RewindButton';
-import ForwardButton from './ForwardButton';
-import RepeatButton from './RepeatButton';
-import ShuffleButton from './ShuffleButton';
-import FavoriteButton from './FavoriteButton';
+import DesktopPlayer from './DesktopPlayer';
+
 
 export default function Footer(){
 
@@ -154,36 +146,25 @@ export default function Footer(){
         <React.Fragment>
             {localPlayer}
             {/* <div id="progress-bar"></div> */}
-            <ProgressBar progress={progress} onChange={handleOnProgressBarChange}/>
             <footer>
-                <div className="player-left">
-                    <TrackInfo track={audioPlayerState.currentTrack}/>
-                    <Duration currentTime={durationInfo.currentTime} duration={durationInfo.duration}/>
-                </div>
-                <div className="player-middle">
-                    {/* <i className="fas fa-redo fa-2x"></i> */}
-                    <RepeatButton onClick={handleOnClickRepeatButton}/>
-                    {/* <i className="fas fa-backward fa-2x"></i> */}
-                    <RewindButton onClick={handleOnClickRewindButton}/>
-                    {/* <i className="fas fa-play-circle fa-3x"></i> */}
-                    <PlayPauseButton isPlaying={isPlaying} onClick={handleOnClickPlayPauseButton}/>
-                    {/* <i className="fas fa-forward fa-2x"></i> */}
-                    <ForwardButton onClick={handleOnClickForwardButton}/>
-                    {/* <i className="fas fa-random fa-2x"></i> */}
-                    <ShuffleButton onClick={handleOnClickShuffleButton}/>
-                </div>
-                <div className="player-right">
-                    <div className="volume-control">
-                        {/* <i className="fas fa-volume-down fa-2x"></i>
-                        <input type="range" min="1" max="100" value="30" id="volume-slider"/> */}
-                        <Volume currentVolume={volume} onVolumeChange={handleOnVolumeChange}/>
-                    </div>
-                    <div className="user-control">
-                        {/* <i className="fas fa-heart fa-2x"></i> */}
-                        <FavoriteButton onClick={handleOnClickFavoriteButton} active={favorite}/>
-                        <i className="fas fa-plus fa-2x"></i>
-                        <i className="fas fa-download fa-2x"></i>
-                    </div>
+                <div className="mobile-player"></div>
+                <div className="desktop-player">
+                    <DesktopPlayer 
+                    progress={progress}
+                    handleOnProgressBarChange={handleOnProgressBarChange}
+                    currentTrack={audioPlayerState.currentTrack}
+                    durationInfo={durationInfo}
+                    handleOnClickRepeatButton={handleOnClickRepeatButton}
+                    handleOnClickRewindButton={handleOnClickRewindButton}
+                    isPlaying={isPlaying}
+                    handleOnClickPlayPauseButton={handleOnClickPlayPauseButton}
+                    handleOnClickForwardButton={handleOnClickForwardButton}
+                    handleOnClickShuffleButton={handleOnClickShuffleButton}
+                    volume={volume}
+                    handleOnVolumeChange={handleOnVolumeChange}
+                    handleOnClickFavoriteButton={handleOnClickFavoriteButton}
+                    favorite={favorite}
+                    />
                 </div>
             </footer>
         </React.Fragment>

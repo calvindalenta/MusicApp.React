@@ -1,6 +1,6 @@
 @import '../../index.scss';
 
-footer {
+.desktop-player {
     position: fixed;
     bottom: 0;
     height: 12.5vh;
@@ -18,7 +18,7 @@ footer {
 }
 
 @media screen and (max-width: 425px) {
-    footer, #progress-bar {
+    .desktop-player, #progress-bar {
         display: none;
     }
 }
