@@ -9,7 +9,6 @@ import { Track } from '../../slices/trackSlice';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import PlayPauseButton from './PlayPauseButton';
 import RepeatButton from './RepeatButton';
 import ShuffleButton from './ShuffleButton';
 import FavoriteButton from './FavoriteButton';
@@ -17,6 +16,7 @@ import MobileProgressBar from './MobileProgressBar';
 import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
 import MobileDuration from './MobileDuration';
+import MobilePlayPauseButton from './MobilePlayPauseButton';
 
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
@@ -102,7 +102,7 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                 </div>
                 <div className="dialog-footer">
                     <RewindButton onClick={props.handleOnClickRewindButton}/>
-                    <PlayPauseButton isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
+                    <MobilePlayPauseButton isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
                     <ForwardButton onClick={props.handleOnClickForwardButton}/>
                 </div>
             </div>
