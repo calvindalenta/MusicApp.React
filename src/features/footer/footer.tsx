@@ -150,6 +150,7 @@ export default function Footer(){
     function handleOnCloseMobilePlayer() {
         setMobilePlayerOpen(false);
         audioPlayerRef.current.pause();
+        setIsPlaying(false);
     }
 
     return (
