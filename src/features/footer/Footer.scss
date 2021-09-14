@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: 425px) {
-    .desktop-player, #progress-bar {
+    .desktop-player {
         display: none;
     }
 }
@@ -113,8 +113,18 @@
     // width: 55%;
     // background: $primary-orange;
     position: fixed;
-    bottom: 12vh;
+    bottom: 12.5vh;
     z-index: 1;
 }
+
+@media screen and (max-width: 425px){
+    #progress-bar {
+        position: static;
+        height: 0;
+        // background-color: red;
+    }
+}
+
+
 
 // @import "volume-slider"

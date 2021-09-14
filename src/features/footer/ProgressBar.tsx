@@ -23,9 +23,11 @@ const TrackSlider = withStyles(theme => ({
     },
     track: {
         height: '1vh',
+        width: '100%',
     },
     rail: {
         height: '1vh',
+        width: '100%',
     },
 }))(Slider);
 

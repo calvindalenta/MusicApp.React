@@ -147,6 +147,10 @@ export default function Footer(){
     }
 
     const [mobilePlayerOpen, setMobilePlayerOpen] = useState(false);
+    function handleOnCloseMobilePlayer() {
+        setMobilePlayerOpen(false);
+        audioPlayerRef.current.pause();
+    }
 
     return (
         <React.Fragment>
@@ -157,7 +161,7 @@ export default function Footer(){
                     <MobilePlayer
                     open={mobilePlayerOpen}
                     selectedTrack={audioPlayerState.currentTrack}
-                    onClose={() => setMobilePlayerOpen(false)}
+                    onClose={handleOnCloseMobilePlayer}
                     progress={progress}
                     handleOnProgressBarChange={handleOnProgressBarChange}
                     currentTrack={audioPlayerState.currentTrack}
