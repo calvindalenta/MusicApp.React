@@ -30,7 +30,6 @@ export interface DekstopPlayerProps {
     handleOnVolumeChange: OnChangeProgressBar;
     handleOnClickFavoriteButton: OnMouseClick;
     favorite: boolean;
-
 }
 
 export default function DesktopPlayer(props: DekstopPlayerProps){

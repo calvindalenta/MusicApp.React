@@ -7,6 +7,7 @@ import { selectTrackState, Track } from '../../slices/trackSlice';
 import { registerCallback, selectAudioPlayerState, setCurrentTrack } from '../../slices/playerSlice';
 
 import DesktopPlayer from './DesktopPlayer';
+import MobilePlayer from './MobilePlayer';
 
 
 export default function Footer(){
@@ -42,13 +43,16 @@ export default function Footer(){
     useEffect(() => {
         dispatch(registerCallback(handleOnChangeTrack));
 
-        if (trackState.status === 'succeeded') {
-            const randomTrack = trackState.value[Math.round(Math.random() * trackState.value.length)];
-            dispatch(setCurrentTrack(randomTrack));
-        }
+        // if (trackState.status === 'succeeded') {
+        //     const randomTrack = trackState.value[Math.round(Math.random() * trackState.value.length)];
+        //     dispatch(setCurrentTrack(randomTrack));
+        // }
     }, [dispatch, trackState]);
 
     function handleOnChangeTrack(track: Track){
+        if (window.innerWidth <= 425) {
+            setMobilePlayerOpen(true);
+        }
         const currentPlayer = audioPlayerRef.current;
         currentPlayer.pause();
         setIsPlaying(false);
@@ -142,12 +146,34 @@ export default function Footer(){
         console.log(favorite);
     }
 
+    const [mobilePlayerOpen, setMobilePlayerOpen] = useState(false);
+
     return (
         <React.Fragment>
             {localPlayer}
             {/* <div id="progress-bar"></div> */}
             <footer>
-                <div className="mobile-player"></div>
+                <div className="mobile-player">
+                    <MobilePlayer
+                    open={mobilePlayerOpen}
+                    selectedTrack={audioPlayerState.currentTrack}
+                    onClose={() => setMobilePlayerOpen(false)}
+                    progress={progress}
+                    handleOnProgressBarChange={handleOnProgressBarChange}
+                    currentTrack={audioPlayerState.currentTrack}
+                    durationInfo={durationInfo}
+                    handleOnClickRepeatButton={handleOnClickRepeatButton}
+                    handleOnClickRewindButton={handleOnClickRewindButton}
+                    isPlaying={isPlaying}
+                    handleOnClickPlayPauseButton={handleOnClickPlayPauseButton}
+                    handleOnClickForwardButton={handleOnClickForwardButton}
+                    handleOnClickShuffleButton={handleOnClickShuffleButton}
+                    volume={volume}
+                    handleOnVolumeChange={handleOnVolumeChange}
+                    handleOnClickFavoriteButton={handleOnClickFavoriteButton}
+                    favorite={favorite}
+                    />
+                </div>
                 <div className="desktop-player">
                     <DesktopPlayer 
                     progress={progress}
