@@ -69,7 +69,7 @@ export default function ProgressBar(props: ProgressBarProps){
             min={0}
             max={100}
             step={1}
-            defaultValue={0}
+            // defaultValue={0}
         />
     );
 }
