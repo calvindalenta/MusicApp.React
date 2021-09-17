@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: {
@@ -18,9 +18,4 @@ const audioPlayerSlice = createSlice({
     },
 });
 
-export default configureStore({
-    reducer: {
-        audioPlayer: audioPlayerSlice.reducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
-});
+export default audioPlayerSlice.reducer;

@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { Track } from "../../../slices/trackSlice";
 import Trending from './Trending';
-import mockStore from './mockStore';
+import mockStore from '../../../mocks/mockStore';
 
 afterEach(cleanup)
 
