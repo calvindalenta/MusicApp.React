@@ -30,7 +30,7 @@ describe('Popular component', () => {
         expect(img.src).toMatch(new RegExp(track.imageUrl + '$'));
         expect(img.alt).toBe(track.author);
         expect(author.textContent).toBe(track.author);
-        expect(followers.textContent).toMatch(new RegExp('...M Followers'));
+        expect(followers.textContent).toMatch(new RegExp('.??M Followers'));
     });
 
 });
