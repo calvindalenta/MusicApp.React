@@ -50,7 +50,7 @@ export default function MobileProgressBar(props: ProgressBarProps){
             min={0}
             max={100}
             step={1}
-            defaultValue={0}
+            data-testid="mobile-progress-bar"
         />
     );
 }
