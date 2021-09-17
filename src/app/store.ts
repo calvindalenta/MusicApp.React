@@ -7,6 +7,7 @@ export const store = configureStore({
     track: TrackReducer,
     audioPlayer: AudioPlayerReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
 });
 
 export type AppDispatch = typeof store.dispatch;
