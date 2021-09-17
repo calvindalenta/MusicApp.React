@@ -21,6 +21,7 @@ export default function RewindButton(props: RewindButtonProps){
         <FastRewindIconEx
         color="disabled"
         onClick={props.onClick}
+        data-testid="rewind"
         >
         </FastRewindIconEx>
     );

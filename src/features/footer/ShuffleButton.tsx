@@ -20,6 +20,7 @@ export default function RepeatButton(props: ShuffleButtonProps){
         <ShuffleIconEx 
         color='disabled'
         onClick={props.onClick}
+        data-testid="shuffle"
         ></ShuffleIconEx>
     );
 

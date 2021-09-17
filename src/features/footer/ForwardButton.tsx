@@ -20,6 +20,7 @@ export default function FowardButton(props: ForwardButtonProps){
         <FastForwardIconEx
         color='disabled'
         onClick={props.onClick}
+        data-testid="forward"
         ></FastForwardIconEx>
     );
 }
