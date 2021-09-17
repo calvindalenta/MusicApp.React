@@ -3,7 +3,7 @@ import PlayPauseButton from './PlayPauseButton';
 
 afterEach(cleanup)
 
-describe('TrackInfo component', () => {
+describe('PlayPauseButton component', () => {
 
     it('should render play button when isPlaying is false', () => {
         const onClick = jest.fn();
