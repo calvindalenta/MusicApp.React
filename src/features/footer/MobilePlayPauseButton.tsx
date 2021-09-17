@@ -33,11 +33,13 @@ export default function MobilePlayPauseButton(props: PlayPauseButtonProps){
 
     const playButton = 
         <PlayCircleFilledIconEx
+            data-testid="mobile-play"
             onClick={onClick}
         />
 
     const pauseButton = 
         <PauseCircleFilledIconEx
+            data-testid="mobile-pause"
             onClick={onClick}
         />
 
