@@ -13,7 +13,7 @@ export default function TrackInfo(props: TrackInfoProps){
 
     const author = track !== null ? track.author : 'No Title';;
 
-    const imageSource = track !== null ? track.imageUrl : '';
+    const imageSource = track !== null ? track.imageUrl : 'api/image/default';
 
     return (
         <React.Fragment>
