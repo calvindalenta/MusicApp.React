@@ -3,7 +3,7 @@ import FavoriteButton from './FavoriteButton';
 
 afterEach(cleanup)
 
-describe('ProgressBar component', () => {
+describe('FavoriteButton component', () => {
 
     it('should change color when clicked', () => {
         const onClick = jest.fn(() => active = !active);

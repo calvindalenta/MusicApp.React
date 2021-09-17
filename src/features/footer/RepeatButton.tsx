@@ -20,6 +20,7 @@ export default function RepeatButton(props: RepeatButtonProps){
         <RepeatIconEx 
         color='disabled'
         onClick={props.onClick}
+        data-testid="repeat"
         ></RepeatIconEx>
     );
 
