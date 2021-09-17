@@ -24,6 +24,7 @@ export default function FavoriteButton(props: FavoriteButtonProps){
         color='disabled'
         style={{color: color}}
         onClick={props.onClick}
+        data-testid="favorite"
         >
 
         </FavoriteIconEx>
