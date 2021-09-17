@@ -39,11 +39,13 @@ export default function PlayPauseButton(props: PlayPauseButtonProps){
 
     const playButton = 
         <PlayCircleFilledIconEx
+            data-testid="play"
             onClick={onClick}
         />
 
     const pauseButton = 
         <PauseCircleFilledIconEx
+            data-testid="pause"
             onClick={onClick}
         />
 
