@@ -31,7 +31,7 @@ const VolumeSlider = withStyles(theme => ({
     },
 }))(Slider);
 
-type OnVolumeChange = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
+export type OnVolumeChange = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
 
 export interface VolumeProps {
     currentVolume: number;
@@ -53,6 +53,7 @@ export default function Volume(props: VolumeProps){
             min={0}
             max={1}
             step={0.01}
+            data-testid="volume"
             />
         </React.Fragment>
     );
