@@ -1,0 +1,84 @@
+name: MusCloud
+on: push
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  SERVICE: muscloud
+  REGION: asia-southeast1
+  PORT: 8080
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Setup folders
+      run: |
+        mkdir production
+        mkdir production/client
+
+    - name: Clone react front-end
+      uses: actions/checkout@v2
+      with:
+        repository: calvindalenta/MusicApp.React
+        path: ./MusicApp.React
+        ref: master
+        token: ${{ secrets.PAT }}
+
+    - name: Setup node environment
+      uses: actions/setup-node@v1
+
+    - name: Install react dependencies and run tests
+      working-directory: ./MusicApp.React
+      run: |
+        npm install
+        npm run test -- --coverage
+
+    - name: Build react and move it to production folder
+      working-directory: ./MusicApp.React
+      run: |
+        npm run build
+        mv build/* ../production/client
+
+    - name: Clone ASP.NET Core backend
+      uses: actions/checkout@v2
+      with:
+        repository: calvindalenta/MusicApp.Api
+        path: ./MusicApp.Api
+        ref: master
+        token: ${{ secrets.PAT }}
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Build project and move it to production folder
+      working-directory: ./MusicApp.Api
+      run: |
+        dotnet build -c Release
+        mv MusicApp.Api/bin/Release/net5.0/* ../production
+
+    - name: Setup gcloud account
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ env.PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+
+    - name: Authorize Docker push
+      run: gcloud auth configure-docker --quiet
+
+    - name: Copy Dockerfile to root
+      working-directory: .
+      run: |
+        mv MusicApp.React/Dockerfile ./Dockerfile
+    
+    - name: Build and Push Container
+      working-directory: .
+      run: |-
+        docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} .
+        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
+
+    - name: Deploy to Cloud Run
+      run: gcloud run deploy ${{ env.SERVICE }} --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }} --port=${{ env.PORT }} --region=${{ env.REGION }} --max-instances=3 --allow-unauthenticated
