@@ -1,0 +1,1 @@
+![Build Status](https://github.com/calvindalenta/MusicApp.React/actions/workflows/main.yml/badge.svg)
