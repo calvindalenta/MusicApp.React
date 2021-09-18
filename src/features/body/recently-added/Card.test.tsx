@@ -1,4 +1,6 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import mockStore from "../../../mocks/mockStore";
 import { Track } from "../../../slices/trackSlice";
 import Card from './Card';
 
@@ -18,9 +20,10 @@ const track: Track = {
 describe('Card component', () => {
 
     it('should render track title, author, image url, and image alt', () => {
-
         const { getByTestId } = render(
-            <Card src={track.imageUrl} title={track.title} author={track.author}></Card>
+            <Provider store={mockStore}>
+                <Card track={track}></Card>
+            </Provider>
         )
 
         const img = document.querySelector('img');
@@ -31,6 +34,20 @@ describe('Card component', () => {
         expect(img.alt).toBe(track.author + ' - ' + track.title);
         expect(title.textContent).toBe(track.title);
         expect(author.textContent).toBe(track.author);
+    });
+
+    it('should change current track when clicked', () => {
+        const { getByTestId } = render(
+            <Provider store={mockStore}>
+                <Card track={track}></Card>
+            </Provider>
+        )
+
+        const card = document.querySelector('.card');
+        fireEvent.click(card);
+
+        expect(mockStore.getState().audioPlayer.value.currentTrack.id).toBe(track.id);
+
     });
 
 });

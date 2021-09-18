@@ -1,5 +1,4 @@
-import { cleanup, render } from "@testing-library/react";
-import { Track } from "../../../slices/trackSlice";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import mockStore from '../../../mocks/mockStore';
 import Album from './Album';
@@ -9,7 +8,6 @@ afterEach(cleanup)
 describe('Album component', () => {
 
     it('should render track title, author, image url, and image alt', () => {
-
         const { getByTestId } = render(
             <Provider store={mockStore}>
                 <Album></Album>
@@ -27,6 +25,19 @@ describe('Album component', () => {
         expect(img.alt).toBe(lastTrack.author);
         expect(description.textContent).toBe('Three Pieces from Songbook, Andrius Zlabys, piano');
         expect(author.textContent).toBe(lastTrack.author);
+    });
+
+    it('should change current track when clicked', () => {
+        const { getByTestId } = render(
+            <Provider store={mockStore}>
+                <Album></Album>
+            </Provider>
+        )
+
+        const card = document.querySelector('.album-container');
+        fireEvent.click(card);
+
+        expect(mockStore.getState().audioPlayer.value).not.toBeNull();
     });
 
 });

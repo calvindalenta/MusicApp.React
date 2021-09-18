@@ -1,6 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Track } from "../slices/trackSlice";
 
-const initialState = {
+type ChangeTrackCallback = (track: Track) => void;
+
+interface AudioPlayer{
+    currentTrack: Track;
+    callback: ChangeTrackCallback;
+}
+
+interface AudioPlayerState {
+  value: AudioPlayer;
+}
+
+const initialState: AudioPlayerState = {
   value: {
     currentTrack: null,
     callback: null,
