@@ -1,6 +1,6 @@
 import { Slider, withStyles } from "@material-ui/core";
 import React from "react";
-// import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import { OnVolumeChange } from '../../types/events';
 
 const VolumeSlider = withStyles(theme => ({
     root: {
@@ -31,7 +31,6 @@ const VolumeSlider = withStyles(theme => ({
     },
 }))(Slider);
 
-export type OnVolumeChange = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
 
 export interface VolumeProps {
     currentVolume: number;

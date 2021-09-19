@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { OnMouseClick } from '../../types/events';
 
 const FavoriteIconEx = withStyles(theme => ({
     root: {
@@ -8,7 +9,6 @@ const FavoriteIconEx = withStyles(theme => ({
     },
 }))(FavoriteIcon);
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 
 export interface FavoriteButtonProps {
     active: boolean;

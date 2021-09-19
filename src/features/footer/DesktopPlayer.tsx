@@ -14,8 +14,7 @@ import { Track } from "../../slices/trackSlice";
 import { makePlayPauseButton } from "../overrides/makePlayPauseButton";
 import { makeProgressBar } from "../overrides/makeProgressBar";
 
-type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
+import { OnChangeProgressBar, OnMouseClick } from '../../types/events';
 
 export interface DekstopPlayerProps {
     progress: number;

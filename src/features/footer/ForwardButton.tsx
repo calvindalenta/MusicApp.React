@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/core';
 import FastForwardIcon from '@material-ui/icons/FastForward';
+import { OnMouseClick } from '../../types/events';
 
 const FastForwardIconEx = withStyles(theme => ({
     root: {
@@ -8,7 +9,6 @@ const FastForwardIconEx = withStyles(theme => ({
     },
 }))(FastForwardIcon);
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 
 export interface ForwardButtonProps {
     onClick: OnMouseClick;

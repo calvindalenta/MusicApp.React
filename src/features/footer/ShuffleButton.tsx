@@ -1,5 +1,6 @@
 import { withStyles } from '@material-ui/core';
 import ShuffleIcon from '@material-ui/icons/Shuffle';
+import { OnMouseClick } from '../../types/events';
 
 const ShuffleIconEx = withStyles(theme => ({
     root: {
@@ -8,7 +9,6 @@ const ShuffleIconEx = withStyles(theme => ({
     },
 }))(ShuffleIcon);
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 
 export interface ShuffleButtonProps {
     onClick: OnMouseClick;

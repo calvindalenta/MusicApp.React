@@ -1,4 +1,4 @@
-type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
+import { OnChangeProgressBar } from '../../types/events';
 
 export interface ProgressBarProps {
     progress: number;

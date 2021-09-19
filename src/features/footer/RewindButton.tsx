@@ -1,6 +1,6 @@
-
 import { withStyles } from '@material-ui/core';
 import FastRewindIcon from '@material-ui/icons/FastRewind';
+import { OnMouseClick } from '../../types/events';
 
 const FastRewindIconEx = withStyles(theme => ({
     root: {
@@ -9,7 +9,6 @@ const FastRewindIconEx = withStyles(theme => ({
     },
 }))(FastRewindIcon);
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 
 export interface RewindButtonProps {
     onClick: OnMouseClick;

@@ -1,6 +1,6 @@
 import React from "react";
+import { OnMouseClick } from '../../types/events';
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 
 export interface PlayPauseButtonProps {
     isPlaying: boolean;

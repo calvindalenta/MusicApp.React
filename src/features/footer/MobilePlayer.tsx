@@ -20,8 +20,7 @@ import ProgressBar from './ProgressBar';
 import { makePlayPauseButton } from '../overrides/makePlayPauseButton';
 import { makeProgressBar } from '../overrides/makeProgressBar';
 
-type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
-type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
+import { OnChangeProgressBar, OnMouseClick } from '../../types/events';
 
 export interface MobilePlayerProps {
     open: boolean;
