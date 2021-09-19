@@ -12,12 +12,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import RepeatButton from './RepeatButton';
 import ShuffleButton from './ShuffleButton';
 import FavoriteButton from './FavoriteButton';
-import MobileProgressBar from './MobileProgressBar';
 import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
 import Duration from './Duration';
 import PlayPauseButton from './PlayPauseButton';
+import ProgressBar from './ProgressBar';
 import { makePlayPauseButton } from '../overrides/makePlayPauseButton';
+import { makeProgressBar } from '../overrides/makeProgressBar';
 
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
@@ -74,6 +75,36 @@ export default function MobilePlayer(props: MobilePlayerProps) {
         },
     })
     
+    const bar = makeProgressBar({
+        root: {
+            color: '#ffcb19',
+            height: 0,
+            zIndex: 1,
+        },
+        thumb: {
+            height: '2vh',
+            width: '2vh',
+            backgroundColor: '#ffcb19',
+            marginTop: '-0.5vh',
+            marginLeft: '-1vh',
+            '&:focus, &:hover, &$active': {
+                boxShadow: 'inherit',
+            },
+        },
+        active: {},
+        valueLabel: {
+            left: 'calc(-50% + 4px)',
+        },
+        track: {
+            height: '1vh',
+            width: '100%',
+        },
+        rail: {
+            height: '1vh',
+            width: '100%',
+        },
+    })
+    
     return (
         <DialogEx 
         fullScreen 
@@ -105,7 +136,7 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                     <ArrowBackIosIcon className="control-item" onClick={handleClose} fontSize="large"/> */}
                 </div>
                 <div className="dialog-progress">
-                    <MobileProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
+                    <ProgressBar Bar={bar} progress={props.progress} onChange={props.handleOnProgressBarChange}/>
                 </div>
                 <div className="dialog-duration">
                     <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}>

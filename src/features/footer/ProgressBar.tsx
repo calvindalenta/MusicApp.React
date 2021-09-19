@@ -1,45 +1,13 @@
-import { Slider, withStyles } from "@material-ui/core";
-
-// https://stackoverflow.com/questions/53892108/color-change-for-the-loading-bar-component-of-material-ui
-const TrackSlider = withStyles(theme => ({
-    root: {
-        color: '#ffcb19',
-        height: 0,
-        zIndex: 1,
-    },
-    thumb: {
-        height: '2vh',
-        width: '2vh',
-        backgroundColor: '#ffcb19',
-        marginTop: '-0.5vh',
-        marginLeft: '-1vh',
-        '&:focus, &:hover, &$active': {
-            boxShadow: 'inherit',
-        },
-    },
-    active: {},
-    valueLabel: {
-        left: 'calc(-50% + 4px)',
-    },
-    track: {
-        height: '1vh',
-        width: '100%',
-    },
-    rail: {
-        height: '1vh',
-        width: '100%',
-    },
-}))(Slider);
-
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
 
 export interface ProgressBarProps {
     progress: number;
     onChange: OnChangeProgressBar;
+    Bar: React.ComponentType<any>
 }
 
 export default function ProgressBar(props: ProgressBarProps){
-    const { progress, onChange } = props;
+    const { progress, onChange, Bar } = props;
 
     // Determining click position on progress bar
     // https://stackoverflow.com/questions/28311631/determine-click-position-on-progress-bar
@@ -60,7 +28,7 @@ export default function ProgressBar(props: ProgressBarProps){
     // }
 
     return (
-        <TrackSlider
+        <Bar
             id="progress-bar"
             value={progress}
             // onClick={test}

@@ -12,6 +12,7 @@ import ShuffleButton from './ShuffleButton';
 import FavoriteButton from './FavoriteButton';
 import { Track } from "../../slices/trackSlice";
 import { makePlayPauseButton } from "../overrides/makePlayPauseButton";
+import { makeProgressBar } from "../overrides/makeProgressBar";
 
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
@@ -43,9 +44,39 @@ export default function DesktopPlayer(props: DekstopPlayerProps){
         },
     })
 
+    const bar = makeProgressBar({
+        root: {
+            color: '#ffcb19',
+            height: 0,
+            zIndex: 1,
+        },
+        thumb: {
+            height: '2vh',
+            width: '2vh',
+            backgroundColor: '#ffcb19',
+            marginTop: '-0.5vh',
+            marginLeft: '-1vh',
+            '&:focus, &:hover, &$active': {
+                boxShadow: 'inherit',
+            },
+        },
+        active: {},
+        valueLabel: {
+            left: 'calc(-50% + 4px)',
+        },
+        track: {
+            height: '1vh',
+            width: '100%',
+        },
+        rail: {
+            height: '1vh',
+            width: '100%',
+        },
+    })
+
     return (
         <React.Fragment>
-            <ProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
+            <ProgressBar Bar={bar} progress={props.progress} onChange={props.handleOnProgressBarChange}/>
             <div className="player-left">
                 <TrackInfo track={props.currentTrack}/>
                 <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}>
