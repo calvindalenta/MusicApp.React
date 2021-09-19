@@ -9,7 +9,21 @@ describe('TrackInfo component', () => {
     it('should render default value when track is null', () => {
         const track = null;
 
-        render(<TrackInfo track={track}></TrackInfo>)
+        render(
+        <TrackInfo track={track}>
+            {(title, author, imageSource) => {
+                return (
+                    <>
+                        <img src={imageSource} alt={author}/>
+                        <div className="player-left-text">
+                            <p className="author">{title}</p>
+                            <p className="description">{author}</p>
+                        </div>
+                    </>
+                );
+            }}
+        </TrackInfo>
+        )
 
         const expected = 'No Title';
         expect(document.querySelector('.author').textContent)
@@ -34,7 +48,21 @@ describe('TrackInfo component', () => {
             trackUrl: 'api/track/123',
         }
 
-        render(<TrackInfo track={track}></TrackInfo>)
+        render(
+        <TrackInfo track={track}>
+            {(title, author, imageSource) => {
+                return (
+                    <>
+                        <img src={imageSource} alt={author}/>
+                        <div className="player-left-text">
+                            <p className="author">{title}</p>
+                            <p className="description">{author}</p>
+                        </div>
+                    </>
+                );
+            }}
+        </TrackInfo>
+        )
 
         expect(document.querySelector('.author').textContent)
         .toBe(track.title);
