@@ -1,4 +1,5 @@
 import { cleanup, render, fireEvent } from "@testing-library/react";
+import { makeProgressBar } from "../overrides/makeProgressBar";
 import ProgressBar from './ProgressBar';
 
 jest.mock('./ProgressBar', () => (props) => {
@@ -20,6 +21,14 @@ jest.mock('./ProgressBar', () => (props) => {
     );
 });
 
+const bar = makeProgressBar({
+    root: {
+        color: '#ffcb19',
+        height: 0,
+        zIndex: 1,
+    },
+})
+
 afterEach(cleanup)
 
 describe('ProgressBar component', () => {
@@ -30,7 +39,7 @@ describe('ProgressBar component', () => {
         );
         let progress = 0;
         const { getByTestId, rerender } = render(
-            <ProgressBar onChange={onChange} progress={progress}></ProgressBar>
+            <ProgressBar Bar={bar} onChange={onChange} progress={progress}></ProgressBar>
         )
 
         let volume = getByTestId('progress-bar') as HTMLInputElement;
@@ -39,7 +48,7 @@ describe('ProgressBar component', () => {
         fireEvent.change(volume, { target: { value: 76 } });
         expect(onChange).toHaveBeenCalled();
 
-        rerender(<ProgressBar onChange={onChange} progress={progress}></ProgressBar>)
+        rerender(<ProgressBar Bar={bar} onChange={onChange} progress={progress}></ProgressBar>)
         volume = getByTestId('progress-bar') as HTMLInputElement;
         expect(volume.value).toBe(progress.toString());
     });
