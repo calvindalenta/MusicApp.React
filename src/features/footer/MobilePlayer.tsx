@@ -15,8 +15,9 @@ import FavoriteButton from './FavoriteButton';
 import MobileProgressBar from './MobileProgressBar';
 import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
-import MobilePlayPauseButton from './MobilePlayPauseButton';
 import Duration from './Duration';
+import PlayPauseButton from './PlayPauseButton';
+import { makePlayPauseButton } from '../overrides/makePlayPauseButton';
 
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
@@ -63,6 +64,15 @@ export default function MobilePlayer(props: MobilePlayerProps) {
     const author = track !== null ? track.author : 'No Title';;
 
     const imageSource = track !== null ? track.imageUrl : '';
+
+    const { play, pause } = makePlayPauseButton({
+        root: {
+            color: '#ffcb19',
+            cursor: 'pointer',
+            fontSize: '10vh',
+            margin: '0px 2vh 2vh 2vh',
+        },
+    })
     
     return (
         <DialogEx 
@@ -111,7 +121,7 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                 </div>
                 <div className="dialog-footer">
                     <RewindButton onClick={props.handleOnClickRewindButton}/>
-                    <MobilePlayPauseButton isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
+                    <PlayPauseButton PlayButton={play} PauseButton={pause} isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
                     <ForwardButton onClick={props.handleOnClickForwardButton}/>
                 </div>
             </div>

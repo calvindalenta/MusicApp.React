@@ -11,6 +11,7 @@ import RepeatButton from './RepeatButton';
 import ShuffleButton from './ShuffleButton';
 import FavoriteButton from './FavoriteButton';
 import { Track } from "../../slices/trackSlice";
+import { makePlayPauseButton } from "../overrides/makePlayPauseButton";
 
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
@@ -34,6 +35,14 @@ export interface DekstopPlayerProps {
 
 export default function DesktopPlayer(props: DekstopPlayerProps){
 
+    const { play, pause } = makePlayPauseButton({
+        root: {
+            color: '#ffcb19',
+            cursor: 'pointer',
+            fontSize: '6vh',
+        },
+    })
+
     return (
         <React.Fragment>
             <ProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
@@ -55,7 +64,7 @@ export default function DesktopPlayer(props: DekstopPlayerProps){
                 {/* <i className="fas fa-backward fa-2x"></i> */}
                 <RewindButton onClick={props.handleOnClickRewindButton}/>
                 {/* <i className="fas fa-play-circle fa-3x"></i> */}
-                <PlayPauseButton isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
+                <PlayPauseButton PlayButton={play} PauseButton={pause} isPlaying={props.isPlaying} onClick={props.handleOnClickPlayPauseButton}/>
                 {/* <i className="fas fa-forward fa-2x"></i> */}
                 <ForwardButton onClick={props.handleOnClickForwardButton}/>
                 {/* <i className="fas fa-random fa-2x"></i> */}
