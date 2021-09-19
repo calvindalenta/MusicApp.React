@@ -39,7 +39,15 @@ export default function DesktopPlayer(props: DekstopPlayerProps){
             <ProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
             <div className="player-left">
                 <TrackInfo track={props.currentTrack}/>
-                <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}/>
+                <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}>
+                    {(currentTime, duration) => {
+                        return (
+                            <p className="timestamp" data-testid="duration">
+                                {currentTime} - {duration}
+                            </p>  
+                        );
+                    }}
+                </Duration>
             </div>
             <div className="player-middle">
                 {/* <i className="fas fa-redo fa-2x"></i> */}

@@ -15,8 +15,8 @@ import FavoriteButton from './FavoriteButton';
 import MobileProgressBar from './MobileProgressBar';
 import RewindButton from './RewindButton';
 import ForwardButton from './ForwardButton';
-import MobileDuration from './MobileDuration';
 import MobilePlayPauseButton from './MobilePlayPauseButton';
+import Duration from './Duration';
 
 type OnMouseClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 type OnChangeProgressBar = (event: React.ChangeEvent<{}>, value: number | number[]) => void;
@@ -98,7 +98,16 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                     <MobileProgressBar progress={props.progress} onChange={props.handleOnProgressBarChange}/>
                 </div>
                 <div className="dialog-duration">
-                    <MobileDuration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}/>
+                    <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}>
+                        {(currentTime, duration) => {
+                            return (
+                                <>
+                                    <p>{currentTime}</p>
+                                    <p>{duration}</p>
+                                </>
+                            );
+                        }}
+                    </Duration>
                 </div>
                 <div className="dialog-footer">
                     <RewindButton onClick={props.handleOnClickRewindButton}/>

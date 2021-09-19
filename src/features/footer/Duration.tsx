@@ -1,6 +1,7 @@
 export interface DurationProps {
     currentTime: number;
     duration: number;
+    children: (currentTime: string, duration: string) => JSX.Element;
 }
 
 export default function Duration(props: DurationProps){
@@ -24,10 +25,7 @@ export default function Duration(props: DurationProps){
 
     const currentTime = getFormattedNumber(props.currentTime);
     const duration = getFormattedNumber(props.duration);
-    
-    return (
-        <p className="timestamp" data-testid="duration">
-            {currentTime} - {duration}
-        </p>   
-    );
+
+    return props.children(currentTime, duration);
+
 }

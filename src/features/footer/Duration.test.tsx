@@ -6,7 +6,17 @@ afterEach(cleanup)
 describe('Duration component', () => {
 
     it('should render zero', () => {
-        render(<Duration currentTime={0} duration={0}></Duration>)
+        render(
+        <Duration currentTime={0} duration={0}>
+            {(currentTime, duration) => {
+                return (
+                    <p className="timestamp" data-testid="duration">
+                        {currentTime} - {duration}
+                    </p> 
+                );
+            }}
+        </Duration>
+        )
 
         const duration = document.querySelector('[data-testid="duration"]');
 
@@ -14,7 +24,17 @@ describe('Duration component', () => {
     });
 
     it('should render duration information', () => {
-        render(<Duration currentTime={87} duration={254}></Duration>)
+        render(
+        <Duration currentTime={87} duration={254}>
+            {(currentTime, duration) => {
+                return (
+                    <p className="timestamp" data-testid="duration">
+                        {currentTime} - {duration}
+                    </p> 
+                );
+            }}
+        </Duration>
+        )
 
         const duration = document.querySelector('[data-testid="duration"]');
 
@@ -22,7 +42,17 @@ describe('Duration component', () => {
     });
 
     it('should render zero if given minus values', () => {
-        render(<Duration currentTime={-87} duration={-254}></Duration>)
+        render(
+        <Duration currentTime={-87} duration={-254}>
+            {(currentTime, duration) => {
+                return (
+                    <p className="timestamp" data-testid="duration">
+                        {currentTime} - {duration}
+                    </p> 
+                );
+            }}
+        </Duration>
+        )
 
         const duration = document.querySelector('[data-testid="duration"]');
 
