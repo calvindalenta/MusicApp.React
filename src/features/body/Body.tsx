@@ -13,9 +13,13 @@ import './Body.scss'
 // import Discover from './discover/Discover';
 import Nav from './nav/Nav';
 import CardView from './recently-added/CardView';
+import CardViewLoading from './recently-added/CardViewLoading';
 import Album from './album/Album';
+import AlbumLoading from './album/AlbumLoading';
 import TrendingView from './trending/TrendingView';
+import TrendingViewLoading from './trending/TrendingViewLoading';
 import PopularView from './popular/PopularView';
+import PopularViewLoading from './popular/PopularViewLoading';
 import { useSelector } from 'react-redux';
 import { selectTrackState } from '../../slices/trackSlice';
 import React from 'react';
@@ -115,14 +119,19 @@ function Body(){
             <div className="main-section">
                 {
                 useSelector(selectTrackState).status === 'succeeded' ?
-                    <React.Fragment>
+                    <>
                         <section><Album/></section>
                         <section><TrendingView/></section>
                         <section><CardView/></section>
                         <section><PopularView/></section>
-                    </React.Fragment>
+                    </>
                 :
-                'Loading...'
+                    <>
+                        <section><AlbumLoading/></section>
+                        <section><TrendingViewLoading/></section>
+                        <section><CardViewLoading/></section>
+                        <section><PopularViewLoading/></section>
+                    </>
                 }
             </div> 
             
