@@ -21,10 +21,10 @@ import { makePlayPauseButton } from '../overrides/makePlayPauseButton';
 import { makeProgressBar } from '../overrides/makeProgressBar';
 
 import { OnChangeProgressBar, OnMouseClick } from '../../types/events';
+import TrackInfo from './TrackInfo';
 
 export interface MobilePlayerProps {
     open: boolean;
-    selectedTrack: Track;
     onClose: () => void;
 
     progress: number;
@@ -53,17 +53,9 @@ const DialogEx = withStyles(theme => ({
 
 export default function MobilePlayer(props: MobilePlayerProps) {
 
-    const track = props.currentTrack;
-
     const handleClose = () => {
         props.onClose();
     };
-
-    const title = track !== null ? track.title : 'No Title';
-
-    const author = track !== null ? track.author : 'No Title';;
-
-    const imageSource = track !== null ? track.imageUrl : '';
 
     const { play, pause } = makePlayPauseButton({
         root: {
@@ -115,17 +107,26 @@ export default function MobilePlayer(props: MobilePlayerProps) {
                     <ArrowBackIosIcon onClick={handleClose} fontSize="large"/>
                     <MoreVertIcon onClick={() => {}} fontSize="large"/>
                 </div>
-                <div className="dialog-image">
-                    <img src={imageSource} alt={title + ' - ' + author} />
-                </div>
-                <div className="dialog-info">
-                    <div className="dialog-title">
-                        <p>{title}</p>
-                    </div>
-                    <div className="dialog-author">
-                        <p>{author}</p>
-                    </div>
-                </div>
+                <TrackInfo track={props.currentTrack}>
+                    {(title, author, imageSource) => {
+                        return (
+                            <>
+                                <div className="dialog-image">
+                                    <img src={imageSource} alt={title + ' - ' + author} />
+                                </div>
+                                <div className="dialog-info">
+                                    <div className="dialog-title">
+                                        <p>{title}</p>
+                                    </div>
+                                    <div className="dialog-author">
+                                        <p>{author}</p>
+                                    </div>
+                                </div>
+                            </>
+                        );
+                    }}
+                </TrackInfo>
+                
                 <div className="dialog-control">
                     <RepeatButton onClick={props.handleOnClickRepeatButton}/>
                     <FavoriteButton onClick={props.handleOnClickFavoriteButton} active={props.favorite}/>

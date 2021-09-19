@@ -161,7 +161,6 @@ export default function Footer(){
                 <div className="mobile-player">
                     <MobilePlayer
                     open={mobilePlayerOpen}
-                    selectedTrack={audioPlayerState.currentTrack}
                     onClose={handleOnCloseMobilePlayer}
                     progress={progress}
                     handleOnProgressBarChange={handleOnProgressBarChange}

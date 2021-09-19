@@ -3,6 +3,7 @@ import React from "react";
 
 export interface TrackInfoProps {
     track: Track;
+    children: (title: string, author: string, imageSource: string) => JSX.Element;
 }
 
 export default function TrackInfo(props: TrackInfoProps){
@@ -17,11 +18,7 @@ export default function TrackInfo(props: TrackInfoProps){
 
     return (
         <React.Fragment>
-            <img src={imageSource} alt={author}/>
-            <div className="player-left-text">
-                <p className="author">{title}</p>
-                <p className="description">{author}</p>
-            </div>
+            {props.children(title, author, imageSource)}
         </React.Fragment>
     );
 }

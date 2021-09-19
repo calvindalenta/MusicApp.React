@@ -77,7 +77,19 @@ export default function DesktopPlayer(props: DekstopPlayerProps){
         <React.Fragment>
             <ProgressBar Bar={bar} progress={props.progress} onChange={props.handleOnProgressBarChange}/>
             <div className="player-left">
-                <TrackInfo track={props.currentTrack}/>
+                <TrackInfo track={props.currentTrack}>
+                    {(title, author, imageSource) => {
+                        return (
+                            <>
+                                <img src={imageSource} alt={author}/>
+                                <div className="player-left-text">
+                                    <p className="author">{title}</p>
+                                    <p className="description">{author}</p>
+                                </div>
+                            </>
+                        );
+                    }}
+                </TrackInfo>
                 <Duration currentTime={props.durationInfo.currentTime} duration={props.durationInfo.duration}>
                     {(currentTime, duration) => {
                         return (
