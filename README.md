@@ -10,12 +10,12 @@ My goal was to learn React and automatically build, test, and deploy the project
 - I needed backend to fetch music tracks and images. [So I made this backend project](https://github.com/calvindalenta/MusicApp.Api)
 - I added some interactivity and statefulness using React.
 - I added some tests for individual components.
-- Setup CI/CD.
+- Setup CI/CD: [The workflow](https://github.com/calvindalenta/MusicApp.React/blob/master/.github/workflows/main.yml)
 
 # How to navigate this project
 - Custom audio player: Example code for [mobile](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/MobilePlayer.tsx) and [desktop](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/DesktopPlayer.tsx)
 - This app fetches data before ReactDOM.render even called: Example for [the dispatch call](https://github.com/calvindalenta/MusicApp.React/blob/master/src/index.tsx) and [data transformation](https://github.com/calvindalenta/MusicApp.React/blob/master/src/slices/trackSlice.ts)
-- Main view: [Example Code](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/body/Body.tsx)
+- Main view: [Example code](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/body/Body.tsx)
 - Unit tests: [Example test](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/PlayPauseButton.test.tsx)
   
 # Why I build the project this way
