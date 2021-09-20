@@ -18,7 +18,7 @@ My goal was to learn React and automatically build, test, and deploy the project
 - Main view: [Example code](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/body/Body.tsx)
 - Unit tests: [Example test](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/PlayPauseButton.test.tsx)
   
-# Why I build the project this way
+# Why I built the project this way
 - I used Redux as a state management library since many React developers default to Redux for state management.
 - Material UI is a great library that provides you with solid pre-styled components that will get the job done faster. However, I still needed to customize some of the components to make this app look unique.
 - Testing is an essential part of production applications. This app uses React Testing Library and Jest to unit test its essential features.
