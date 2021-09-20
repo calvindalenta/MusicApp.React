@@ -10,10 +10,32 @@ header {
     cursor: pointer;
     /* background-color: red; */
 
-    h1 {
+    .main-logo {
         flex: 1;
         font-weight: 900;
-        /* background-color: yellow; */
+        text-decoration: none;
+        // border: 3px solid black;
+
+        display: flex;
+        align-items: center;
+        gap: 5%;
+
+        &:visited {
+            color: black;
+        }
+        
+        .logo-image {
+            flex: 0 0 30%;
+            text-align: right;
+            // border: 3px solid green;
+        }
+
+        h1 {
+            flex: 0 0 60%;
+            text-align: left;
+            // border: 3px solid red;
+        }
+        
     }
 
     .search {

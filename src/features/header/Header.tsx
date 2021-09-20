@@ -6,7 +6,12 @@ function Header() {
 
   return (
       <header>
-        <h1>MusCloud</h1>
+        <a className="main-logo" href="/">
+          <div className="logo-image">
+            <img src="/logo32.png" alt="MusCloud Logo" />
+          </div>
+          <h1>MusCloud</h1>
+        </a>
         <div className="search">
             <i className="fas fa-search fa-2x"></i>
             <input type="search" name="track-search" id="search" placeholder="Search for songs, artists, albums, etc..."/>
