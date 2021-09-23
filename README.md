@@ -29,3 +29,8 @@ My goal was to learn React and automatically build, test, and deploy the project
 - Refactor some of the code. Especially [this Footer.tsx file](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/Footer.tsx) and [this MobilePlayer.tsx](https://github.com/calvindalenta/MusicApp.React/blob/master/src/features/footer/MobilePlayer.tsx)
 - Test using Enzyme.
 - Add end-to-end tests with Cypress.
+
+# Credits
+- Web App design by [Levani's ART design on Dribbble](https://dribbble.com/shots/7687430-Music-Web-App-UI/attachments/425702?mode=media).
+- Music tracks by [mixkit.co](https://mixkit.co/)
+- Images from [freepik](https://www.freepik.com)
