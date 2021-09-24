@@ -1,6 +1,7 @@
 ![Build Status](https://github.com/calvindalenta/MusicApp.React/actions/workflows/main.yml/badge.svg)
 
 ### [Visit the live web app](https://muscloud-lsy6w4sjoa-as.a.run.app/)
+#### [The website is mobile-friendly](https://search.google.com/test/mobile-friendly?id=es6OALqjyB9RWUsvvyDgTg)
 ------------
 # How I worked on this project
 My goal was to learn React and automatically build, test, and deploy the project (CI/CD).
